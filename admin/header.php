@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <meta name="description" content="" />
 
-  <!-- Favicon -->
+  <!-- Favicon -->  
   <link rel="icon" type="image/x-icon" href="../assets/img/logo.jpg" />
 
   <!-- Fonts -->
