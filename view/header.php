@@ -46,7 +46,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-2 col-lg-2 col-6">
                             <div class="logo">
-                                <a href="index.html">
+                                <a href="index.php?act=shop">
                                     <img src="uniqlo/uniqlo/images/logo/uniqlo.png" alt="logo">
                                 </a>
                             </div>
@@ -55,31 +55,25 @@
                         <div class="col-md-8 col-lg-8 d-none d-md-block">
                             <nav class="mainmenu__nav  d-none d-lg-block">
                                 <ul class="main__menu">
-                                    <li class="drop"><a href="index.html">Home</a>
+                                    <li class="drop"><a href="index.php?act=shop">Trang chủ</a>
 
                                     </li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li class="drop"><a href="blog.html">Danh mục</a>
+
+                                    <li class="drop"><a href="index.php?act=listdanhmuc">Danh mục</a>
                                         <ul class="dropdown">
-                                            <li><a href="blog.html">blog</a></li>
-                                            <li><a href="blog-details.html">blog details</a></li>
+                                            <?php
+                                                    foreach($dsdm as $dm){
+                                                        extract($dm);
+                                                        $linkdm="index.php?act=listdanhmuc=".$listdanhmuc;//đề lấy ra được các sản phẩm cùng loại 
+                                                        
+                                
+                                                    }
+                                            ?>
                                         </ul>
                                     </li>
 
-                                    <li class="drop"><a href="#">pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="about.html">about</a></li>
-                                            <li><a href="shop.html">shop</a></li>
-                                            <li><a href="shop-sidebar.html">shop sidebar</a></li>
-                                            <li><a href="product-details.html">product details</a></li>
-                                            <li><a href="cart.html">cart</a></li>
-                                            <li><a href="wishlist.html">wishlist</a></li>
-                                            <li><a href="checkout.html">checkout</a></li>
-                                            <li><a href="team.html">team</a></li>
-                                            <li><a href="login-register.html">login & register</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">contact</a></li>
+
+                                    <li><a href="contact.html">Liên hệ</a></li>
                                 </ul>
                             </nav>
 
@@ -109,9 +103,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
+                            <!-- TÌM KIẾM -->
                             <div class="search__inner">
                                 <form action="#" method="get">
-                                    <input placeholder="Search here... " type="text">
+                                    <input placeholder="Tìm kiếm " type="text" name="keyword" id="">
                                     <button type="submit"></button>
                                 </form>
                                 <div class="search__close__btn">

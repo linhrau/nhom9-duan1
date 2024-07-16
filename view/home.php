@@ -3,7 +3,7 @@
            <div class="slider__activation__wrap owl-carousel owl-theme">
                <!-- Start Single Slide -->
                <div class="animation__style01 slide slider__full--screen"
-                   style="background: rgba(0, 0, 0, 0) url(uniqlo/uniqloimages/slider/bg/5.jpg) no-repeat scroll center center / cover ;">
+                   style="background: rgba(0, 0, 0, 0) url(uniqlo/uniqlo/images/slider/bg/5.jpg) no-repeat scroll center center / cover ;">
                    <div class="container">
                        <div class="row">
                            <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
