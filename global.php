@@ -1,5 +1,5 @@
 <?php
-$img_path = 'upload/';
+$img_path = 'img/';
 
 $loginMessage = '';
 $sendMailMess = '';

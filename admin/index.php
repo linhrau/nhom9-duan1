@@ -5,6 +5,7 @@ ob_start();
     include "../model/pdo.php";
     include "../model/danhmuc.php";
     include "../model/sanpham.php";
+    include "../model/taikhoan.php";
 
 
     include "header.php";
@@ -33,7 +34,7 @@ ob_start();
                     $mo_ta_sp = $_POST['mo_ta_sp'];
                 
                     $hinh = $_FILES['hinh']['name']; //lấy ra tên hình
-                    $target_dir = "../upload/";
+                    $target_dir = "../img/";
                     $target_file = $target_dir.basename($_FILES['hinh']['name']);
                     if(move_uploaded_file($_FILES['hinh']['tmp_name'], $target_file)){
                         echo "Upload thành công!";
@@ -63,7 +64,7 @@ ob_start();
             case "suasp":
                 if(isset($_GET['id_san_pham'])&&($_GET['id_san_pham']>0)){
                   
-                    $sanpham=loadone_sanpham($_GET['id_san_pham']);
+                    $san_pham=loadone_sanpham($_GET['id_san_pham']);
                 }
                 $listdanhmuc= loadall_danhmuc();
                 include "sanpham/update.php";
@@ -155,6 +156,40 @@ ob_start();
             case "home":
                 include "home.php";
                 break;
+
+            case "listtk":
+                $listtaikhoan=loadall_taikhoan();
+                include "taikhoan/list.php";
+                break;  
+            
+             case "xoatk":
+                if(isset($_GET['id_tai_khoan'])&&($_GET['id_tai_khoan']>0)){
+                    $sql="delete from tai_khoan where id_tai_khoan=".$_GET['id_tai_khoan'];
+                    pdo_execute($sql);
+                }
+                $sql="select * from tai_khoan order by id_tai_khoan desc";
+                $listtaikhoan=pdo_query($sql);
+                include "taikhoan/list.php";
+                break;  
+
+            case "addtk":
+
+                if(isset($_POST['themmoi'])&&($_POST['themmoi'])){
+                    $ho_ten = $_POST['ho_ten'];
+                    $ten_dang_nhap = $_POST['ten_dang_nhap'];
+                    $mat_khau = $_POST['mat_khau'];
+                    $email = $_POST['email'];
+                    $dia_chi = $_POST['dia_chi'];
+                    $sdt = $_POST['sdt'];
+                    $role = $_POST['role'];
+                  
+                    insert_taikhoan($ho_ten, $ten_dang_nhap, $mat_khau, $email, $dia_chi, $sdt, $role);
+                    $thanhcong = "Thêm thành công!";
+                }
+
+                include "taikhoan/add.php";
+                break;  
+            
           
         }
     }else{
