@@ -19,7 +19,7 @@
               <h5 class="mb-0">CẬP NHẬT THÔNG TIN SẢN PHẨM</h5>
             </div>
             <div class="card-body">
-            <form action="index.php?act=updatesp" method="PUT" enctype="multipart/form-data">
+            <form action="index.php?act=updatesp" method="POST" enctype="multipart/form-data">
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label" for="basic-default-name">Danh mục</label>
                   <div class="col-sm-10">
@@ -29,9 +29,9 @@
                         <?php
                         foreach($listdanhmuc as $key=>$value){
                             if($id_danh_muc==$value['id_danh_muc']){
-                                echo '<option value="'.$value['id_danh_muc'].'" selected>'.$value['name_danh_muc'].'</option>' ;
+                                echo '<option value="'.$value['id_danh_muc'].'" selected>'.$value['ten_danh_muc'].'</option>' ;
                             }else{
-                                echo '<option value="'.$value['id_danh_muc'].'">'.$value['name_danh_muc'].'</option>' ;
+                                echo '<option value="'.$value['id_danh_muc'].'">'.$value['ten_danh_muc'].'</option>' ;
                             }
 
                         }

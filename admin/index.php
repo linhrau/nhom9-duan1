@@ -6,6 +6,9 @@ ob_start();
     include "../model/danhmuc.php";
     include "../model/sanpham.php";
     include "../model/taikhoan.php";
+    include "../model/binhluan.php";
+    include "../model/giohang.php";
+    
 
 
     include "header.php";
@@ -162,7 +165,7 @@ ob_start();
                 include "taikhoan/list.php";
                 break;  
             
-             case "xoatk":
+            case "xoatk":
                 if(isset($_GET['id_tai_khoan'])&&($_GET['id_tai_khoan']>0)){
                     $sql="delete from tai_khoan where id_tai_khoan=".$_GET['id_tai_khoan'];
                     pdo_execute($sql);
@@ -191,6 +194,60 @@ ob_start();
                 break;  
             
           
+
+            case "listbl":
+                $sql="select * from binh_luan order by id_binh_luan desc";
+                $listbinhluan=pdo_query($sql);
+                include "binhluan/list.php";
+                break;  
+            case "xoabl":
+                if(isset($_GET['id_binh_luan'])&&($_GET['id_binh_luan']>0)){
+                    $sql="delete from binh_luan where id_binh_luan=".$_GET['id_binh_luan'];
+                    pdo_execute($sql);
+                }
+                $sql="select * from binh_luan order by id_binh_luan desc";
+                $listbinhluan=pdo_query($sql);
+                include "binhluan/list.php";
+                break;  
+
+            case "listdonhang":
+                if (isset($_POST['key']) && ($_POST['key'])!="") {
+                    $key = $_POST['key'];
+                }else{
+                    $key = "";
+                }
+                $listdonhang = loadall_donhang($key,0);
+                include "donhang/list.php";
+                break;
+            case 'suadh':
+                if (isset($_GET['id']) && ($_GET['id']>0)) {
+                    $donhang = loadone_donhang($_GET['id']);
+                }
+                include "donhang/update.php";
+                break;
+                
+            case "xoadh":
+                if (isset($_GET['id_hoa_don']) && ($_GET['id_hoa_don'] > 0)) {
+                    xoa_donhang($_GET['id_hoa_don']);
+                }
+                $listdonhang = loadall_donhang("",0);
+                include "donhang/list.php";
+                break;
+
+            case 'updatedh':
+                if (isset($_POST['update']) && ($_POST['update'])) {
+                    $trang_thai = isset($_POST['trang_thai']) ? intval($_POST['trang_thai']) : 0;
+                    $id_hoa_don = $_POST['id_hoa_don'];
+                    // Kiểm tra nếu $bill_status không nằm trong khoảng từ 0 đến 3, đặt lại giá trị về 0
+                    if ($trang_thai < 0 || $trang_thai > 3) {
+                        $trang_thai = 0;
+                    }
+                    suadonhang($id_hoa_don, $trang_thai);
+                }          
+                $listdonhang = loadall_donhang("",0);
+                header('location:index.php?act=listdonhang');
+                include "donhang/update.php";
+                break;
         }
     }else{
         include "home.php";
