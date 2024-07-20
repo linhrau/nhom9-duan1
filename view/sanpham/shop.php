@@ -86,8 +86,8 @@
                             foreach($dssp as $sp){
                                 extract($sp);
                                 $img = $img_path.$img;
-                                $linksp="index.php?act=chitietsp&idsp=".$id_san_pham;
-                        ?>
+                                $linksp="index.php?act=chitietsp&id_san_pham=".$id_san_pham;
+                            ?>
                            <div class="col-md-3 col-sm-6 single__pro">
                                <div class="product foo">
                                    <div class="product__inner">

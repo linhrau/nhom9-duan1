@@ -64,7 +64,7 @@
                                             <?php
                                                     foreach($dsdm as $dm){
                                                         extract($dm);
-                                                        $linkdm="index.php?act=listdanhmuc=".$listdanhmuc;//đề lấy ra được các sản phẩm cùng loại 
+                                                        $linkdm = "index.php?act=listdanhmuc&listdanhmuc=" . $listdanhmuc;//đề lấy ra được các sản phẩm cùng loại 
                                                         
                                 
                                                     }

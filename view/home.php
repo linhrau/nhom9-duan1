@@ -21,24 +21,7 @@
                </div>
                <!-- End Single Slide -->
                <!-- Start Single Slide -->
-               <div class="animation__style02 slide slider__full--screen"
-                   style="background: rgba(0, 0, 0, 0) url(uniqlo/uniqlo/images/slider/bg/5.jpg) no-repeat scroll center center / cover ;">
-                   <div class="container">
-                       <div class="row">
-                           <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                               <div class="slider__content">
-                                   <h1>Furniture <br> </h1>
-                                   <h2><span class="text--theme">unique </span> Style.</h2>
-                                   <p>Whether you adore a classic blueblood aesthetic or a downhome décor, you can find
-                                       a wenro sofa to suit your desires perfectly.</p>
-                                   <div class="uniq__btn">
-                                       <a class="htc__btn" href="cart.html">shop now</a>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
+
                <!-- End Single Slide -->
            </div>
        </div>

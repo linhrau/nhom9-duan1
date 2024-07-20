@@ -16,20 +16,30 @@ if(isset($_GET['act']) && ($_GET['act'] != "")){
             }else{
                 $kyw = "";
             }
-            if(isset($_GET['iddm']) && ($_GET['iddm']>0)){
-                $iddm=$_GET['iddm'];
+            if(isset($_GET['id_danh_muc']) && ($_GET['id_danh_muc']>0)){
+                $id_danh_muc=$_GET['id_danh_muc'];
             }else{
-                $iddm=0;
+                $id_danh_muc=0;
             }
-            $dssp=loadall_sanpham($kyw,$iddm);
-            $tendm= load_ten_dm($iddm);
+            $dssp=loadall_sanpham($kyw,$id_danh_muc);
+            $tendm= load_ten_dm($id_danh_muc);
             include "view/sanpham/shop.php";
             break;
-        case 'danhmuc':
-            $tendm= load_ten_dm($iddm);
-        default:
-        include "view/home.php";
+
+
+        case 'chitietsp':
+            if (isset($_GET['id_san_pham']) && ($_GET['id_san_pham'] > 0)) {
+                $id = $_GET['id_san_pham'];
+                $onesp = loadone_sanpham($id);
+                extract($onesp);
+              
+             
+                include "view/sanpham/chitietsp.php";
+            } else {
+                include "view/home.php";
+            }
             break;
+        
     }
 }else{
     include "view/home.php";

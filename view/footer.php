@@ -79,23 +79,7 @@
               <!-- End Single Footer Widget -->
           </div>
           <!-- Start Copyright Area -->
-          <div class="htc__copyright__area">
-              <div class="row">
-                  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                      <div class="copyright__inner">
-                          <div class="copyright">
-                              <p>© 2022 Uniqlo. Made with <i class="ti-heart"></i> by <a target="_blank"
-                                      href="https://www.hasthemes.com/">HasThemes.</a></p>
-                          </div>
-                          <ul class="footer__menu">
-                              <li><a href="index.html">Home</a></li>
-                              <li><a href="shop.html">Product</a></li>
-                              <li><a href="contact.html">Contact Us</a></li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-          </div>
+
           <!-- End Copyright Area -->
       </div>
   </footer>
@@ -113,6 +97,7 @@
                               aria-hidden="true">&times;</span></button>
                   </div>
                   <div class="modal-body">
+
                       <div class="modal-product">
                           <!-- Start product images -->
                           <div class="product-images">
@@ -145,45 +130,7 @@
                                   Designed for simplicity and made from high quality materials. Its sleek geometry and
                                   material combinations creates a modern look.
                               </div>
-                              <div class="select__color">
-                                  <h2>Select color</h2>
-                                  <ul class="color__list">
-                                      <li class="red"><a title="Red" href="#">Red</a></li>
-                                      <li class="gold"><a title="Gold" href="#">Gold</a></li>
-                                      <li class="orange"><a title="Orange" href="#">Orange</a></li>
-                                      <li class="orange"><a title="Orange" href="#">Orange</a></li>
-                                  </ul>
-                              </div>
-                              <div class="select__size">
-                                  <h2>Select size</h2>
-                                  <ul class="color__list">
-                                      <li class="l__size"><a title="L" href="#">L</a></li>
-                                      <li class="m__size"><a title="M" href="#">M</a></li>
-                                      <li class="s__size"><a title="S" href="#">S</a></li>
-                                      <li class="xl__size"><a title="XL" href="#">XL</a></li>
-                                      <li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
-                                  </ul>
-                              </div>
-                              <div class="social-sharing">
-                                  <div class="widget widget_socialsharing_widget">
-                                      <h3 class="widget-title-modal">Share this product</h3>
-                                      <ul class="social-icons">
-                                          <li><a target="_blank" title="rss" href="#" class="rss social-icon"><i
-                                                      class="zmdi zmdi-rss"></i></a></li>
-                                          <li><a target="_blank" title="Linkedin" href="#"
-                                                  class="linkedin social-icon"><i class="zmdi zmdi-linkedin"></i></a>
-                                          </li>
-                                          <li><a target="_blank" title="Pinterest" href="#"
-                                                  class="pinterest social-icon"><i class="zmdi zmdi-pinterest"></i></a>
-                                          </li>
-                                          <li><a target="_blank" title="Tumblr" href="#" class="tumblr social-icon"><i
-                                                      class="zmdi zmdi-tumblr"></i></a></li>
-                                          <li><a target="_blank" title="Pinterest" href="#"
-                                                  class="pinterest social-icon"><i class="zmdi zmdi-pinterest"></i></a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
+
                               <div class="addtocart-btn">
                                   <a href="#">Add to cart</a>
                               </div>

@@ -4,18 +4,26 @@ function loadall_sanpham_home(){
     $listsanpham=pdo_query($sql);// thực hiện câu lệnh truy vấn (nhiều dl nên dùng pdo_query($sql))
     return  $listsanpham;
 }
-function loadall_sanpham($keyw="",$iddm=0){
+function loadall_sanpham($keyw="",$id_danh_muc=0){
     $sql="SELECT * from san_pham where 1";
     // where 1 tức là nó đúng
     if($keyw!=""){
         $sql.=" and name like '%".$keyw."%'";
     }
-    if($iddm>0){
-        $sql.=" and iddm ='".$iddm."'";
+    if($id_danh_muc>0){
+        $sql.=" and id_danh_muc ='".$id_danh_muc."'";
     }
     $sql.=" order by id_san_pham desc";
     $listsanpham=pdo_query($sql);
     return  $listsanpham;
 }
+
+function loadone_sanpham($id){
+    $sql = "select * from san_pham where id_san_pham = $id";
+    $result = pdo_query_one($sql);
+  
+    return $result;
+}
+
 
 ?>
