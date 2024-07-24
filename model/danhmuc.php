@@ -5,6 +5,12 @@ function loadall_danhmuc(){
     $listdanhmuc=pdo_query($sql);
     return  $listdanhmuc;
 }
+function danhmuc(){
+    $sql="SELECT * FROM danh_muc";
+    $danhmuc=pdo_query($sql);
+    return $danhmuc;
+
+}
 function load_ten_dm($id_danh_muc){
     if($id_danh_muc>0){
         $sql="SELECT * from danh_muc where id_danh_muc=".$id_danh_muc;
@@ -14,4 +20,5 @@ function load_ten_dm($id_danh_muc){
     }else{
         return "";
     }
+
 }

@@ -1,3 +1,10 @@
+<?php
+require_once 'model/pdo.php';
+
+$sql = "SELECT id_danh_muc, ten_danh_muc FROM danh_muc";
+$danhmuc = pdo_query($sql);
+?>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -46,7 +53,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-2 col-lg-2 col-6">
                             <div class="logo">
-                                <a href="index.php?act=shop">
+                                <a href="index.php">
                                     <img src="uniqlo/uniqlo/images/logo/uniqlo.png" alt="logo">
                                 </a>
                             </div>
@@ -55,25 +62,24 @@
                         <div class="col-md-8 col-lg-8 d-none d-md-block">
                             <nav class="mainmenu__nav  d-none d-lg-block">
                                 <ul class="main__menu">
-                                    <li class="drop"><a href="index.php?act=shop">Trang chủ</a>
+                                    <li class="drop"><a href="index.php">Trang chủ</a>
 
                                     </li>
 
-                                    <li class="drop"><a href="index.php?act=listdanhmuc">Danh mục</a>
+                                    <li class="drop">
+                                        <a href="index.php?act=listdanhmuc">Danh mục</a>
                                         <ul class="dropdown">
                                             <?php
-                                                    foreach($dsdm as $dm){
-                                                        extract($dm);
-                                                        $linkdm = "index.php?act=listdanhmuc&listdanhmuc=" . $listdanhmuc;//đề lấy ra được các sản phẩm cùng loại 
-                                                        
-                                
-                                                    }
+                                            foreach ($danhmuc as $dm) {
+                                                extract($dm);
+                                                $linkdm = "index.php?act=listdanhmuc&id_danh_muc=" . $id_danh_muc;
+                                                echo '<li><a href="' . $linkdm . '">' . htmlspecialchars($ten_danh_muc) . '</a></li>';
+                                            }
                                             ?>
                                         </ul>
                                     </li>
 
-
-                                    <li><a href="contact.html">Liên hệ</a></li>
+                                    <li><a href="./contact.php">Liên hệ</a></li>
                                 </ul>
                             </nav>
 
@@ -82,7 +88,13 @@
                         <div class="col-md-2 col-lg-2 col-6">
                             <ul class="menu-extra">
                                 <li class="search search__open d-none d-sm-block"><span class="ti-search"></span></li>
-                                <li><a href="login-register.html"><span class="ti-user"></span></a></li>
+                                <?php if (isset($_SESSION['user'])) : ?>
+                                <li><a href="profile.php"><span class="ti-user"></span>
+                                        <?php echo htmlspecialchars($_SESSION['user']['ho_ten']); ?></a></li>
+                                <li><a href="logout.php">Logout</a></li>
+                                <?php else : ?>
+                                <li><a href="login.php"><span class="ti-user"></span></a></li>
+                                <?php endif; ?>
                                 <li class="cart__menu"><span class="ti-shopping-cart"></span></li>
 
                             </ul>
@@ -106,7 +118,7 @@
                             <!-- TÌM KIẾM -->
                             <div class="search__inner">
                                 <form action="#" method="get">
-                                    <input placeholder="Tìm kiếm " type="text" name="keyword" id="">
+                                    <input placeholder="Tìm kiếm " type="submit" name="clickOK" id="">
                                     <button type="submit"></button>
                                 </form>
                                 <div class="search__close__btn">
@@ -190,7 +202,7 @@
                         <li class="total__price">$130.00</li>
                     </ul>
                     <ul class="shopping__btn">
-                        <li><a href="cart.html">View Cart</a></li>
+                        <li><a href="cart.php">View Cart</a></li>
                         <li class="shp__checkout"><a href="uniqlo/checkout.html">Checkout</a></li>
                     </ul>
                 </div>

@@ -15,6 +15,7 @@ function loadall_sanpham($keyw="",$id_danh_muc=0){
     }
     $sql.=" order by id_san_pham desc";
     $listsanpham=pdo_query($sql);
+    
     return  $listsanpham;
 }
 
