@@ -31,8 +31,8 @@ function load_sanpham_cungloai($id_san_pham, $id_danh_muc){
     $result = pdo_query($sql);
     return $result;
 }
-function insert_sanpham($ten_san_pham, $gia, $hinh, $mo_ta_sp , $id_danh_muc){
-    $sql= " INSERT INTO `san_pham`(`ten_san_pham`, `gia`, `img`, `mo_ta_sp`,`id_danh_muc`) VALUES ('$ten_san_pham', '$gia', '$hinh', '$mo_ta_sp',  '$id_danh_muc');";
+function insert_sanpham($ten_san_pham, $gia, $img, $mo_ta_sp , $id_danh_muc){
+    $sql= " INSERT INTO `san_pham`(`ten_san_pham`, `gia`, `img`, `mo_ta_sp`,`id_danh_muc`) VALUES ('$ten_san_pham', '$gia', '$img', '$mo_ta_sp',  '$id_danh_muc');";
     pdo_execute($sql);
 }
 function delete_sanpham($id_san_pham){
@@ -40,11 +40,11 @@ function delete_sanpham($id_san_pham){
     pdo_execute($sql);
 }
 
-function update_sanpham($id_san_pham,$id_danh_muc,$ten_san_pham,$gia,$mo_ta_sp,$hinh){
-    if($hinh!=""){
-        $sql=  "UPDATE `san_pham` SET `ten_san_pham` = '{$ten_san_pham}', `gia` = '{$gia}',`mo_ta_sp` = '{$mo_ta_sp}',`img` = '{$hinh}', `id_danh_muc` = '{$id_danh_muc}' WHERE `san_pham`.`id_san_pham` = $id_san_pham";
+function update_sanpham($id_san_pham,$id_danh_muc,$ten_san_pham,$gia,$mo_ta_sp,$img){
+    if($img!=""){
+        $sql=  "UPDATE `san_pham` SET `ten_san_pham` = '{$ten_san_pham}', `gia` = '{$gia}',`mo_ta_sp` = '{$mo_ta_sp}',`img` = '{$img}', `id_danh_muc` = '{$id_danh_muc}' WHERE `san_pham`.`id_san_pham` = $id_san_pham";
     }else{
-        $sql=  "UPDATE `san_pham` SET `ten_san_pham` = '{$ten_san_pham}', `gia` = '{$gia}',    `mo_ta_sp` = '{$mo_ta_sp}', `id_danh_muc` = '{$id_danh_muc}' WHERE `san_pham`.`id_san_pham` = $id_san_pham";
+        $sql=  "UPDATE `san_pham` SET `ten_san_pham` = '{$ten_san_pham}', `gia` = '{$gia}',    `mo_ta_sp` = '{$mo_ta_sp}', `id_danh_muc` = '{$id_danh_muc}' WHERE `san_pham`.`id_san_pham` = $id_san_pham,  `img` = $img";
     }   
     pdo_execute($sql);
 }

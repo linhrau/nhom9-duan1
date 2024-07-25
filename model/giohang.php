@@ -13,7 +13,7 @@
                 
                 <th class="cart__table--header__list">Sản phẩm </th>
                 <th class="cart__table--header__list">Giá </th>
-                <th class="cart__table--header__list">Số lượng</th>
+                <th class="cart__table--header__list">Mô tả</th>
                 <th class="cart__table--header__list">Thành tiền</th>
                 '.$xoasp_th.'
             </tr>

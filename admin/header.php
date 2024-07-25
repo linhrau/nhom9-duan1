@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 
-<html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default"
-  data-assets-path="../assets/" data-template="vertical-menu-template-free">
-  
+<html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
+
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
   <title>Admin</title>
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <meta name="description" content="" />
 
-  <!-- Favicon -->  
-  <link rel="icon" type="image/x-icon" href="../assets/img/logo.jpg" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/image/logo/brand-logo2.png " />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="../assets/vendor/fonts/materialdesignicons.css" />
 
@@ -54,12 +51,12 @@
 
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="background: pink">
         <div class="app-brand demo">
-          <a href="" class="app-brand-link">
-           <img src="../assets/img/logo/logo.png" alt="" width="50px">
-            <span class="app-brand-text demo menu-text fw-semibold ms-2" >Double L</span>
+          <a href="index.php?act=shop" class="app-brand-link">
+            <img src="../assets/image/logo/brand-logo2.png" alt="" width="50px">
+            <span class="app-brand-text demo menu-text fw-semibold ms-2">Double L</span>
           </a>
 
-         
+
         </div>
 
         <div class="menu-inner-shadow"></div>
@@ -75,7 +72,7 @@
           <!-- DANH MỤC  -->
           <li class="menu-item">
             <a href="" class="menu-link menu-toggle">
-              <i class="mdi mdi-folder-outline" style="padding-right: 15px;"></i>              
+              <i class="mdi mdi-folder-outline" style="padding-right: 15px;"></i>
               <div data-i18n="Layouts">Danh mục</div>
             </a>
 
@@ -90,13 +87,13 @@
                   <div data-i18n="Without navbar">Thêm danh mục</div>
                 </a>
               </li>
-             
+
             </ul>
           </li>
           <!-- SẢN PHẨM  -->
           <li class="menu-item">
             <a href="" class="menu-link menu-toggle">
-              <i class="mdi mdi-clipboard" style="padding-right: 15px;"></i>              
+              <i class="mdi mdi-clipboard" style="padding-right: 15px;"></i>
               <div data-i18n="Layouts">Sản phẩm</div>
             </a>
 
@@ -111,16 +108,16 @@
                   <div data-i18n="Without navbar">Thêm sản phẩm</div>
                 </a>
               </li>
-             
+
 
             </ul>
           </li>
-        
 
-           <!-- BÌNH LUẬN  -->
-           <li class="menu-item">
+
+          <!-- BÌNH LUẬN  -->
+          <li class="menu-item">
             <a href="" class="menu-link menu-toggle">
-              <i class="mdi mdi-message-text-outline" style="padding-right: 15px;"></i>              
+              <i class="mdi mdi-message-text-outline" style="padding-right: 15px;"></i>
               <div data-i18n="Layouts">Bình luận</div>
             </a>
 
@@ -130,15 +127,15 @@
                   <div data-i18n="Without menu">Danh sách bình luận </div>
                 </a>
               </li>
-              
-             
+
+
             </ul>
           </li>
 
-             <!-- ĐƠN HÀNG  -->
-             <li class="menu-item">
+          <!-- ĐƠN HÀNG  -->
+          <li class="menu-item">
             <a href="" class="menu-link menu-toggle">
-            <i class="mdi mdi-format-list-bulleted" style="padding-right: 15px;"></i>
+              <i class="mdi mdi-format-list-bulleted" style="padding-right: 15px;"></i>
               <div data-i18n="Layouts">Đơn hàng</div>
             </a>
 
@@ -148,15 +145,15 @@
                   <div data-i18n="Without menu">Danh sách đơn hàng </div>
                 </a>
               </li>
-             
-             
-             
+
+
+
             </ul>
           </li>
-             <!-- KHÁCH HÀNG  -->
-             <li class="menu-item">
+          <!-- KHÁCH HÀNG  -->
+          <li class="menu-item">
             <a href="" class="menu-link menu-toggle">
-              <i class="mdi mdi-account-outline" style="padding-right: 15px;"></i>              
+              <i class="mdi mdi-account-outline" style="padding-right: 15px;"></i>
               <div data-i18n="Layouts">Tài khoản</div>
             </a>
 
@@ -171,15 +168,33 @@
                   <div data-i18n="Without navbar">Thêm tài khoản</div>
                 </a>
               </li>
-             
-             
+
+
             </ul>
           </li>
 
-           <!-- THỐNG KÊ  -->
-           <li class="menu-item">
+
+          <!-- Liên Hệ -->
+          <li class="menu-item">
             <a href="" class="menu-link menu-toggle">
-              <i class="mdi mdi-chart-line" style="padding-right: 15px;"></i>              
+              <i class="mdi mdi-format-list-bulleted" style="padding-right: 15px;"></i>
+              <div data-i18n="Layouts">Liên Hệ</div>
+            </a>
+
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="index.php?act=listlienhe" class="menu-link">
+                  <div data-i18n="Without menu">Danh sách liên hệ </div>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <!-- THỐNG KÊ  -->
+          <li class="menu-item">
+            <a href="" class="menu-link menu-toggle">
+              <i class="mdi mdi-chart-line" style="padding-right: 15px;"></i>
               <div data-i18n="Layouts">Thống kê</div>
             </a>
 
@@ -194,8 +209,8 @@
                   <div data-i18n="Without menu">Biểu đồ </div>
                 </a>
               </li>
-              
-             
+
+
             </ul>
           </li>
 
@@ -207,9 +222,7 @@
       <div class="layout-page">
         <!-- Navbar -->
 
-        <nav
-          class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-          id="layout-navbar">
+        <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
           <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
             <a class="nav-item nav-link px-0 me-xl-4" href="">
               <i class="mdi mdi-menu mdi-24px"></i>
@@ -218,12 +231,12 @@
 
           <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
             <!-- Search -->
-            <marquee style="color: black;" >Chào mừng bạn đến với trang quản trị của Double L chúc bạn ngày mới vui vẻ!</marquee>
+            <marquee style="color: black;">Chào mừng bạn đến với trang quản trị của Double L chúc bạn ngày mới vui vẻ!</marquee>
 
             <!-- /Search -->
 
             <ul class="navbar-nav flex-row align-items-center ms-auto">
-             
+
               <!-- User -->
               <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
@@ -258,12 +271,12 @@
                   </li> -->
                   <li>
                     <a class="dropdown-item" href="../index.php?act=shop">
-                    <i class="mdi mdi-earth"></i>
-                     <span class="align-middle">Vào trang web</span>
+                      <i class="mdi mdi-earth"></i>
+                      <span class="align-middle">Vào trang web</span>
                     </a>
                   </li>
-                 
-                  
+
+
                   <li>
                     <a class="dropdown-item" href="?act=thoat">
                       <i class="mdi mdi-power me-1 mdi-20px"></i>
