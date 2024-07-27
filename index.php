@@ -163,14 +163,14 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
 
         case 'dangnhap':
-            if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
+            if (isset($_POST['dang_nhap']) && ($_POST['dang_nhap'])) {
                 $ten_dang_nhap = $_POST['ten_dang_nhap'];
                 $mat_khau = $_POST['mat_khau'];
                 $checkuser = check_user($ten_dang_nhap, $mat_khau);
 
                 if (is_array($checkuser)) {
                     $_SESSION['ten_dang_nhap'] = $checkuser;
-                    //   $thongbao = "Đăng nhập thành công";
+                    // $thongbao = "Đăng nhập thành công";
                     header("Location: index.php?act=shop");
                 } else {
                     $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký";

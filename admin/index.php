@@ -34,6 +34,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $id_danh_muc = $_POST['id_danh_muc'];
                 $ten_san_pham = $_POST['ten_san_pham'];
                 $gia = $_POST['gia'];
+                $so_luong = $_POST['so_luong'];
                 $mo_ta_sp = $_POST['mo_ta_sp'];
 
                 $hinh = $_FILES['hinh']['name']; //lấy ra tên hình
@@ -46,7 +47,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 }
 
                 echo $id_danh_muc;
-                insert_sanpham($ten_san_pham, $gia,  $hinh, $mo_ta_sp, $id_danh_muc);
+                insert_sanpham($ten_san_pham, $gia, $so_luong, $hinh, $mo_ta_sp, $id_danh_muc);
 
 
                 $thanhcong = "Thêm thành công!";
@@ -76,6 +77,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $id_san_pham = $_POST['id_san_pham'];
                 $ten_san_pham = $_POST['ten_san_pham'];
                 $gia = $_POST['gia'];
+                $so_luong = $_POST['so_luong'];
                 $mo_ta_sp = $_POST['mo_ta_sp'];
                 $hinh = $_FILES['hinh']['name'];
                 $target_dir = "../img/";
@@ -83,7 +85,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
                 } else {
                 }
-                update_sanpham($id_danh_muc, $id_san_pham, $ten_san_pham, $gia, $mo_ta_sp, $hinh);
+                update_sanpham($id_danh_muc, $id_san_pham, $ten_san_pham, $gia, $so_luong, $mo_ta_sp, $hinh);
                 $thongbao = "cập nhật thành công!";
             }
             $listsanpham = loadall_sanpham("", 0);

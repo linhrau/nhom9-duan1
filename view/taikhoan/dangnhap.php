@@ -32,6 +32,19 @@
 </head>
 
 <body>
+    <h3 style="color:red; margin-left:27%;">
+        <?php
+        if (isset($thongbao) && ($thongbao != "")) {
+            echo $thongbao;
+        }
+        ?>
+    </h3>
+    <?php
+    if (isset($_SESSION['ten_dang_nhap'])) {
+        extract($_SESSION['ten_dang_nhap']);
+        if ($role == 1)  header("Location: admin/index.php");
+    }
+    ?>
     <!-- Body main wrapper start -->
     <!-- Start Login Register Area -->
     <div class="htc__login__register bg__white ptb--130" style="background: rgba(0, 0, 0, 0) url(uniqlo/images/bg/5.jpg) no-repeat scroll center center / cover ;">
@@ -39,7 +52,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <ul class="login__register__menu nav justify-contend-center" role="tablist">
-                        <li role="presentation" class="login active"><a class="active" href="#login" role="tab" data-bs-toggle="tab">Login</a></li>
+                        <li role="presentation" class="login active"><a class="active" href="#dangnhap" role="tab" data-bs-toggle="tab">Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -48,19 +61,23 @@
                 <div class="col-md-6  ml-auto mr-auto">
                     <div class="htc__login__register__wrap">
                         <!-- Start Single Content -->
-                        <div id="login" role="tabpanel" class="single__tabs__panel tab-pane active">
-                            <form class="login" method="post">
-                                <input type="text" placeholder="User Name*">
-                                <input type="password" placeholder="Password*">
+                        <div id="dang_nhap" role="tabpanel" class="single__tabs__panel tab-pane active">
+                            <form action="index.php?act=dangnhap" class="login" method="POST" onsubmit="return validate()">
+                                <input type="text" class="account__login--input" placeholder="User Name*" name="ten_dang_nhap" id="ten">
+                                <span id="ten_dang_nhap" style="color: red;"></span>
+
+                                <input type="password" class="account__login--input" name="mat_khau" placeholder="Password*" id="mk">
+                                <span id="mat_khau_err" style="color: red;"></span>
+
+                                <div class="tabs__checkbox">
+                                    <input type="checkbox">
+                                    <span> Remember me</span>
+                                    <span class="forget"><a href="index.php?act=quenmk">Forget Pasword?</a></span>
+
+                                </div>
+                                <input type="submit" name="login" value="Đăng Nhập">
+
                             </form>
-                            <div class="tabs__checkbox">
-                                <input type="checkbox">
-                                <span> Remember me</span>
-                                <span class="forget"><a href="#">Forget Pasword?</a></span>
-                            </div>
-                            <div class="htc__login__btn mt--30">
-                                <a href="#">Login</a>
-                            </div>
                             <div class="htc__social__connect">
                                 <h2>Or Login With</h2>
                                 <ul class="htc__soaial__list">
@@ -72,31 +89,7 @@
 
                                     <li><a class="bg--googleplus" href="https://plus.google.com/" target="_blank"><i class="zmdi zmdi-google-plus"></i></a></li>
                                 </ul>
-                            </div>
-                        </div>
-                        <!-- End Single Content -->
-                        <!-- Start Single Content -->
-                        <div id="register" role="tabpanel" class="single__tabs__panel tab-pane">
-                            <form class="login" method="post">
-                                <input type="text" placeholder="Name*">
-                                <input type="email" placeholder="Email*">
-                                <input type="password" placeholder="Password*">
-                            </form>
-                            <div class="tabs__checkbox">
-                                <input type="checkbox">
-                                <span> Remember me</span>
-                            </div>
-                            <div class="htc__login__btn">
-                                <a href="#">register</a>
-                            </div>
-                            <div class="htc__social__connect">
-                                <h2>Or Login With</h2>
-                                <ul class="htc__soaial__list">
-                                    <li><a class="bg--twitter" href="https://twitter.com/devitemsllc" target="_blank"><i class="zmdi zmdi-twitter"></i></a></li>
-                                    <li><a class="bg--instagram" href="https://www.instagram.com/devitems/" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
-                                    <li><a class="bg--facebook" href="https://www.facebook.com/devitems/?ref=bookmarks" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
-                                    <li><a class="bg--googleplus" href="https://plus.google.com/" target="_blank"><i class="zmdi zmdi-google-plus"></i></a></li>
-                                </ul>
+                                <p class="account__login--signup__text">Bạn chưa có tài khoản?<button type="submit" style="margin-top:20px;"><a href="index.php?act=dangky"> Đăng ký ngay </a></button></p>
                             </div>
                         </div>
                         <!-- End Single Content -->
@@ -119,6 +112,34 @@
     <script src="js/plugins.js"></script>
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="js/main.js"></script>
+
+    <script>
+        const ten = document.getElementById('ten_dang_nhap')
+        const mk = document.getElementById('mat_khau')
+
+        const ten_err = document.getElementById('ten_dang_nhap_err');
+        const mk_err = document.getElementById('mat_khau_err');
+
+        function validate() {
+            let kt = true;
+            if (ten.value.trim() == "") {
+                ten_err.innerHTML = "Bạn chưa nhập tên";
+                kt = false;
+            } else {
+                ten_err.innerHTML = "";
+            }
+
+            let regexMK = /^(?=.*\d).{6,}$/;
+            if (!regexMK.test(mk.value)) {
+                mk_err.innerHTML = "Mật khẩu ít nhất 6 kí tự phải 1 kí tự là số";
+                kt = false
+            } else {
+                mk_err.innerHTML = "";
+            }
+
+            return kt;
+        }
+    </script>
 
 </body>
 

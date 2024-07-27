@@ -28,6 +28,7 @@
             <th>Mã sản phẩm</th>
             <th>Tên sản phẩm</th>
             <th>Giá </th>
+            <th>Số lượng</th>
             <th>Hình</th>
             <th>Lựa chọn</th>
           </tr>
@@ -49,6 +50,7 @@
                       <td>' . $id_san_pham . '</td>
                       <td>' . $ten_san_pham . '</td>
                       <td>' . $gia . 'đ</td>
+                      <td>' . $so_luong . '</td>
                       <td>' . $hinhpath . '</td>
 
                       <td><a href="' . $suasp . '"><i class="mdi mdi-pencil" style=" height:36px;margin: 15px; color: green"></i></a> <a href="' . $xoasp . '"> <i class="mdi mdi-delete" onclick="return confirm(\'Bạn có chắc chắn muốn xóa\')" style="color: green"></i> </a></td>

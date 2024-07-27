@@ -53,6 +53,14 @@ if (is_file($hinhpath)) {
             <input type="text" class="form-control" id="" name="gia" value="<?= $gia ?>" />
           </div>
         </div>
+
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-name">Số lượng</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="" name="so_luong" value="<?= $so_luong ?>" />
+          </div>
+        </div>
+
         <div class="row mb-3">
           <label class="col-sm-2 form-label" for="basic-icon-default-message">Mô tả</label>
           <div class="col-sm-10">

@@ -47,7 +47,7 @@
                         <li><?= number_format($gia, 0, ',', '.')  ?>đ</li>
                     </ul>
 
-                    <!-- <div class="product-action-wrap">
+                    <div class="product-action-wrap">
                         <div class="prodict-statas"><span>Quantity :</span></div>
                         <div class="product-quantity">
                             <form id='myform' method='POST' action='#'>
@@ -58,9 +58,9 @@
                                 </div>
                             </form>
                         </div>
-                    </div> -->
+                    </div>
                     <ul class="pro__dtl__btn">
-                        <input class="variant__buy--now__btn primary__btn" type="submit" value="Buy now" name="addcart">
+                        <li class="buy__now__btn"><a href="index.php?act=giohang" name="addcart">buy now</a></li>
                         <li><a href="#"><span class="ti-heart"></span></a></li>
                         <li><a href="#"><span class="ti-email"></span></a></li>
                     </ul>

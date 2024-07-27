@@ -28,13 +28,20 @@
         <div class="row mb-3">
           <label class="col-sm-2 col-form-label" for="basic-default-name">Tên sản phẩm</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="ten_san_pham" name="ten_san_pham" placeholder="nhập vào tên sp" /> <span id="ten_san_pham_err" style="color: red;"></span>
+            <input type="text" class="form-control" id="ten_san_pham" name="ten_san_pham" placeholder="Nhập vào tên sản phẩm" /> <span id="ten_san_pham_err" style="color: red;"></span>
           </div>
         </div>
         <div class="row mb-3">
           <label class="col-sm-2 col-form-label" for="basic-default-name">Giá</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="gia" name="gia" placeholder="nhập vào giá của sản phẩm" /><span id="giaerr" style="color: red;"></span>
+            <input type="text" class="form-control" id="gia" name="gia" placeholder="Nhập vào giá của sản phẩm" /><span id="gia_err" style="color: red;"></span>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-name">Số lượng</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="so_luong" name="so_luong" placeholder="Nhập vào số lượng của sản phẩm" /><span id="so_luong_err" style="color: red;"></span>
           </div>
         </div>
 
@@ -81,12 +88,14 @@
 <script>
   const ten_san_pham = document.getElementById('ten_san_pham');
   const gia = document.getElementById('gia');
+  const so_luong = document.getElementById('so_luong');
   const mo_ta_sp = document.getElementById('mo_ta_sp');
   const hinh = document.getElementById('hinh');
 
 
   const ten_san_pham_err = document.getElementById('ten_san_pham_err');
   const gia_err = document.getElementById('gia_err');
+  const so_luong_err = document.getElementById('so_luong_err');
   const mo_ta_sp_err = document.getElementById('mo_ta_sp_err');
   const hinh_err = document.getElementById('hinh_err');
 

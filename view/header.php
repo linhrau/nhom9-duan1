@@ -192,7 +192,7 @@
                         <li class="total__price">$130.00</li>
                     </ul>
                     <ul class="shopping__btn">
-                        <li><a href="cart.html">View Cart</a></li>
+                        <li><a href="index.php?act=giohang">View Cart</a></li>
                         <li class="shp__checkout"><a href="uniqlo/checkout.html">Checkout</a></li>
                     </ul>
                 </div>
