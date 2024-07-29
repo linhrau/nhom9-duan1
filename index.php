@@ -26,7 +26,9 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $tendm = load_ten_dm($id_danh_muc);
             include "view/sanpham/shop.php";
             break;
-
+        
+        case 'shop':
+            break;
 
         case 'chitietsp':
             if (isset($_GET['id_san_pham']) && ($_GET['id_san_pham'] > 0)) {

@@ -15,7 +15,7 @@ $user_id = $_SESSION['user']['id_tai_khoan'];
 
 function get_cart_items($user_id)
 {
-    $sql = "SELECT * FROM cart WHERE id_tai_khoan = :user_id";
+    $sql = "SELECT * FROM cart inner join san_pham on cart.id_san_pham  = san_pham.id_san_pham WHERE cart.id_tai_khoan = :user_id";
     $params = [':user_id' => $user_id];
     return pdo_query($sql, $params);
 }
@@ -310,8 +310,7 @@ $cart_items = get_cart_items($user_id);
                                         <?php foreach ($cart_items as $item) : ?>
                                         <tr>
                                             <td class="product-thumbnail">
-                                                <a href="#"><img
-                                                        src="images/product/<?php echo htmlspecialchars($item['img']); ?>"
+                                                <a href="#"><img src="img/<?php echo htmlspecialchars($item['img']); ?>"
                                                         alt="product img" /></a>
                                             </td>
                                             <td class="product-name"><a
@@ -509,8 +508,7 @@ $cart_items = get_cart_items($user_id);
                                                 <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                                                 <div style="position: absolute; left: -5000px;" aria-hidden="true">
                                                     <input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef"
-                                                        tabindex="-1" value="">
-                                                </div>
+                                                        tabindex="-1" value=""></div>
                                                 <div class="clearfix subscribe__btn"><input type="submit" value="Send"
                                                         name="subscribe" id="mc-embedded-subscribe"
                                                         class="bst__btn btn--white__color">
