@@ -51,7 +51,7 @@
 
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="background: pink">
         <div class="app-brand demo">
-          <a href="index.php?act=shop" class="app-brand-link">
+          <a href="../index.php?act=shop" class="app-brand-link">
             <img src="../assets/image/logo/brand-logo2.png" alt="" width="50px">
             <span class="app-brand-text demo menu-text fw-semibold ms-2">Double L</span>
           </a>
@@ -64,7 +64,7 @@
         <ul class="menu-inner py-1">
           <!-- Dashboards -->
           <li class="menu-item">
-            <a href="index.php?act=home" class="menu-link menu-toggle">
+            <a href="../index.php?act=home" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons mdi mdi-home-outline"></i>
               <div data-i18n="Email">Trang chủ</div>
             </a>

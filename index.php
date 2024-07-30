@@ -157,10 +157,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
             include "view/giohang/listdonhang.php";
             break;
-        case 'dangnhap':
 
-            include "view/taikhoan/dangnhap.php";
-            break;
 
         case 'dangnhap':
             if (isset($_POST['dang_nhap']) && ($_POST['dang_nhap'])) {

@@ -72,10 +72,10 @@
                                 <div class="tabs__checkbox">
                                     <input type="checkbox">
                                     <span> Remember me</span>
-                                    <span class="forget"><a href="index.php?act=quenmk">Forget Pasword?</a></span>
+
 
                                 </div>
-                                <input type="submit" name="login" value="Đăng Nhập">
+                                <input type="submit" name="dang_nhap" value="Đăng Nhập">
 
                             </form>
                             <div class="htc__social__connect">

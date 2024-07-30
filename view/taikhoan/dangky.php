@@ -75,9 +75,9 @@
                                 <input type="text" class="account__login--input" placeholder="Số điện thoại" name="sdt" id="tel">
                                 <span id="tel_err" style="color: red;"></span>
 
-
-
-
+                                <div class="htc__login__btn mt--30">
+                                    <input class="account__login--btn primary__btn" type="submit" name="dangky" value="Đăng ký">
+                                </div>
 
                                 <div class="tabs__checkbox">
                                     <input type="checkbox">
@@ -96,9 +96,6 @@
 
                                         <li><a class="bg--googleplus" href="https://plus.google.com/" target="_blank"><i class="zmdi zmdi-google-plus"></i></a></li>
                                     </ul>
-                                </div>
-                                <div class="htc__login__btn mt--30">
-                                    <input class="account__login--btn primary__btn" type="submit" name="dangky" value="Đăng ký">
                                 </div>
                             </form>
                         </div>
