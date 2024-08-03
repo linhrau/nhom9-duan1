@@ -47,23 +47,29 @@
                         <li><?= number_format($gia, 0, ',', '.')  ?>đ</li>
                     </ul>
 
-                    <div class="product-action-wrap">
-                        <div class="prodict-statas"><span>Quantity :</span></div>
-                        <div class="product-quantity">
-                            <form id='myform' method='POST' action='#'>
+                    <form id='myform' method='POST' action='index.php?act=giohang'>
+                        <div class="product-action-wrap">
+                            <div class="prodict-statas"><span>Quantity :</span></div>
+                            <div class="product-quantity">
                                 <div class="product-quantity">
                                     <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="02">
+                                        <input class="cart-plus-minus-box" name="soluong" type="text" name="qtybutton" value="02">
                                     </div>
+                                    <input type="hidden" name="id_san_pham" value="<?= $id_san_pham ?>">
+                                    <input type="hidden" name="img" value="<?= $img ?>">
+                                    <input type="hidden" name="ten_san_pham" value="<?= $ten_san_pham ?>">
+                                    <input type="hidden" name="gia" value="<?= $gia ?>">
                                 </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
-                    <ul class="pro__dtl__btn">
-                        <li class="buy__now__btn"><a href="index.php?act=giohang" name="addcart">buy now</a></li>
-                        <li><a href="#"><span class="ti-heart"></span></a></li>
-                        <li><a href="#"><span class="ti-email"></span></a></li>
-                    </ul>
+                        <ul class="pro__dtl__btn">
+                            <li class="buy__now__btn">
+                                <input type="submit" type="text" value="Thêm vào giỏ hàng" name="addcart">
+                            </li>
+                            <li><a href="#"><span class="ti-heart"></span></a></li>
+                            <li><a href="#"><span class="ti-email"></span></a></li>
+                        </ul>
+                    </form>
                     <div class="pro__social__share">
                         <h2>Share :</h2>
                         <ul class="pro__soaial__link">
@@ -74,6 +80,52 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="htc__product__comments pt--50 bg__white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Customer Reviews</h2>
+                <div class="comment-form">
+                    <form action="submit_comment.php" method="POST">
+                        <input type="hidden" name="id_san_pham" value="<?= htmlspecialchars($id_san_pham) ?>" />
+                        <input type="hidden" name="id_tai_khoan" value="<?= htmlspecialchars($user_id) ?>" />
+                        <div class="form-group">
+                            <label for="rating">Rating:</label>
+                            <select name="danh_gia" id="rating" required>
+                                <option value="1">1 Star</option>
+                                <option value="2">2 Stars</option>
+                                <option value="3">3 Stars</option>
+                                <option value="4">4 Stars</option>
+                                <option value="5">5 Stars</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Comment:</label>
+                            <textarea name="noi_dung" id="comment" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                    </form>
+                </div>
+
+
+
+                <div class="comment-list">
+                    <h3>Comments:</h3>
+                    <?php foreach ($comments as $comment) : ?>
+                        <div class="comment">
+                            <h4><?= htmlspecialchars($comment['ten_dang_nhap']) ?> -
+                                <?= htmlspecialchars($comment['danh_gia']) ?> Stars</h4>
+                            <p><?= htmlspecialchars($comment['noi_dung']) ?></p>
+                            <small>Posted on <?= htmlspecialchars($comment['ngay_binh_luan']) ?></small>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+
             </div>
         </div>
     </div>
