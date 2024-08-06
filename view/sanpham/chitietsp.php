@@ -91,9 +91,9 @@
             <div class="col-md-12">
                 <h2>Customer Reviews</h2>
                 <div class="comment-form">
-                    <form action="submit_comment.php" method="POST">
+                    <form method="POST">
                         <input type="hidden" name="id_san_pham" value="<?= htmlspecialchars($id_san_pham) ?>" />
-                        <input type="hidden" name="id_tai_khoan" value="<?= htmlspecialchars($user_id) ?>" />
+                        <input type="hidden" name="id_tai_khoan" value="<?= htmlspecialchars($id_tai_khoan) ?>" />
                         <div class="form-group">
                             <label for="rating">Rating:</label>
                             <select name="danh_gia" id="rating" required>
@@ -116,7 +116,7 @@
 
                 <div class="comment-list">
                     <h3>Comments:</h3>
-                    <?php foreach ($comments as $comment) : ?>
+                    <?php foreach ($binhluan as $comment) : ?>
                         <div class="comment">
                             <h4><?= htmlspecialchars($comment['ten_dang_nhap']) ?> -
                                 <?= htmlspecialchars($comment['danh_gia']) ?> Stars</h4>

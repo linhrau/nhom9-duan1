@@ -56,7 +56,7 @@
                                                 <th class="img">Ảnh</th>
                                                 <th class="ten_san_pham">Sản Phẩm</th>
                                                 <th class="product-price">Giá</th>
-                                                <th class="product-quantity">Mô Tả</th>
+                                                <th class="product-quantity">Số Lượng</th>
 
                                             </tr>
                                         </thead>
@@ -74,13 +74,13 @@
                                                     </td>
                                                     <td class="product-name"><a href="#"><?= $cart[2] ?></a></td>
                                                     <td class="product-price"><span class="amount"><?= number_format($cart[3], 0) ?></span></td>
-                                                    <td class="product-quantity"><input type="number" value="<?= $cart[4] ?>" min="1" /></td>
+                                                    <td class="product-quantity"><a href="#"><?= $cart[4] ?></a></td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
                                         <tfoot>
                                             <th colspan="3">Tổng thanh toán</th>
-                                            <th><?= number_format($total, 0) ?></th>
+                                            <th><?= number_format($total, 0) ?> đ</th>
                                         </tfoot>
                                     </table>
                                 <?php } ?>

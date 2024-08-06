@@ -79,7 +79,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $gia = $_POST['gia'];
                 $so_luong = $_POST['so_luong'];
                 $mo_ta_sp = $_POST['mo_ta_sp'];
-                $hinh = $_FILES['hinh']['name'];
+                //lỗi đoạn này
+                $hinh = $_FILES['img']['name'];
                 $target_dir = "../img/";
                 $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
                 if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
@@ -100,7 +101,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             if (isset($_POST['themmoi']) && ($_POST['themmoi'])) { //kiểm tra xem nó có tồn tại hay k và có click vào hay k
                 $tenloai = $_POST['tenloai']; //lấy tên loại về và insert vào database
                 if (empty($_POST['tenloai'])) {
-                    $errtenloai = "Bạn chưa nhập tên loại";
+                    $errtenloai = "Bạn chưa nhập tên danh mục";
                 }
                 if ($errtenloai == "") {
                     $sql = "insert into danh_muc(ten_danh_muc) values('$tenloai')"; //câu lệnh sql

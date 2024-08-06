@@ -57,18 +57,20 @@
                                 <ul class="main__menu">
                                     <li class="drop"><a href="index.php?act=shop">Trang chủ</a>
                                     </li>
-                                    <li class="drop"><a href="index.php?act=listdanhmuc">Danh mục</a>
+                                    <li class="drop">
+                                        <a href="index.php?act=listdanhmuc">Danh mục</a>
                                         <ul class="dropdown">
                                             <?php
-                                            //đang lỗi ở đây
                                             foreach ($dsdm as $dm) {
                                                 extract($dm);
-                                                $linkdm = "index.php?act=listdanhmuc&listdanhmuc=" . $listdanhmuc; //đề lấy ra được các sản phẩm cùng loại 
+                                                $linkdm = "index.php?act=listdanhmuc&id_danh_muc=" . $id_danh_muc;
+                                                echo '<li><a href="' . $linkdm . '">' . htmlspecialchars($ten_danh_muc) . '</a></li>';
                                             }
                                             ?>
                                         </ul>
                                     </li>
                                     <li><a href="uniqlo/contact.html">Liên hệ</a></li>
+                                    <li><a href="index.php?act=listdonhang">Đơn Hàng</a></li>
                                 </ul>
                             </nav>
 

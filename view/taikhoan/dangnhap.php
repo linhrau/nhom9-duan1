@@ -69,12 +69,7 @@
                                 <input type="password" class="account__login--input" name="mat_khau" placeholder="Password*" id="mk">
                                 <span id="mat_khau_err" style="color: red;"></span>
 
-                                <div class="tabs__checkbox">
-                                    <input type="checkbox">
-                                    <span> Remember me</span>
 
-
-                                </div>
                                 <input type="submit" name="dang_nhap" value="Đăng Nhập">
 
                             </form>

@@ -49,9 +49,9 @@ function delete_sanpham($id_san_pham)
 function update_sanpham($id_san_pham, $id_danh_muc, $ten_san_pham, $gia, $so_luong, $mo_ta_sp, $img)
 {
     if ($img != "") {
-        $sql =  "UPDATE `san_pham` SET `ten_san_pham` = '{$ten_san_pham}', `gia` = '{$gia}',`so_luong` ='{$so_luong}',`mo_ta_sp` = '{$mo_ta_sp}',`img` = '{$img}', `id_danh_muc` = '{$id_danh_muc}' WHERE `san_pham`.`id_san_pham` = $id_san_pham";
+        $sql = "UPDATE `san_pham` SET `ten_san_pham` = '{$ten_san_pham}', `gia` = '{$gia}', `so_luong` = '{$so_luong}', `mo_ta_sp` = '{$mo_ta_sp}', `img` = '{$img}', `id_danh_muc` = '{$id_danh_muc}' WHERE `id_san_pham` = $id_san_pham";
     } else {
-        $sql =  "UPDATE `san_pham` SET `ten_san_pham` = '{$ten_san_pham}', `gia` = '{$gia}', `so_luong` ='{$so_luong}',   `mo_ta_sp` = '{$mo_ta_sp}', `id_danh_muc` = '{$id_danh_muc}' WHERE `san_pham`.`id_san_pham` = $id_san_pham,  `img` = $img";
+        $sql = "UPDATE `san_pham` SET `ten_san_pham` = '{$ten_san_pham}', `gia` = '{$gia}', `so_luong` = '{$so_luong}', `mo_ta_sp` = '{$mo_ta_sp}', `id_danh_muc` = '{$id_danh_muc}' WHERE `id_san_pham` = $id_san_pham";
     }
     pdo_execute($sql);
 }

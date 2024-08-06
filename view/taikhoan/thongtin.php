@@ -32,7 +32,9 @@
 </head>
 <style>
     .tttk {
-        margin-top: 150px;
+        margin-top: 120px;
+        text-align: center;
+        color: red;
     }
 
     * {
@@ -55,6 +57,7 @@
 
     .account__content--title {
         color: #007bff;
+        margin-bottom: 6px;
     }
 
     .my__account--section {
@@ -77,6 +80,8 @@
 
     .account__menu--list {
         margin-bottom: 10px;
+        margin-top: 30px;
+
     }
 
     .account__menu--list a {

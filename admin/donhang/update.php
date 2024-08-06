@@ -47,7 +47,7 @@
         <div class="row mb-3">
           <label class="col-sm-2 col-form-label" for="basic-default-name">Tình trạng đơn hàng </label>
           <div class="col-sm-10">
-            <select class="form-control" name="trangthai">
+            <select class="form-control" name="trang_thai">
               <?php
               $status_array = [
                 0 => "Đơn hàng mới",

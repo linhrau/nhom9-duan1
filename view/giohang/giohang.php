@@ -71,7 +71,7 @@
                                                 <th class="img">Ảnh</th>
                                                 <th class="ten_san_pham">Sản Phẩm</th>
                                                 <th class="product-price">Giá</th>
-                                                <th class="product-quantity">Mô Tả</th>
+                                                <th class="product-quantity">Số Lượng</th>
                                                 <th class="product-subtotal">Tổng tiền</th>
                                                 <th class="product-remove">Remove</th>
                                             </tr>

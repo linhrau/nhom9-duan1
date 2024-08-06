@@ -22,6 +22,22 @@ $dsdm = loadall_danhmuc();
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
+        case 'listdanhmuc':
+            if (isset($_POST['keyword']) &&  $_POST['keyword'] != 0) {
+                $kyw = $_POST['keyword'];
+            } else {
+                $kyw = "";
+            }
+            if (isset($_GET['id_danh_muc']) && ($_GET['id_danh_muc'] > 0)) {
+                $id_danh_muc = $_GET['id_danh_muc'];
+            } else {
+                $id_danh_muc = 0;
+            }
+            $dssp = loadall_sanpham($kyw, $id_danh_muc);
+            $tendm = load_ten_dm($id_danh_muc);
+            include "view/sanpham/shop.php";
+            break;
+
         case 'chitietsp':
             if (isset($_POST['guibinhluan']) && ($_POST['guibinhluan'])) {
                 $idpro = $_POST['id_san_pham'];
@@ -255,7 +271,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
             break;
         case 'listdonhang':
-            $listdonhang = load_donhang($_SESSION['ho_ten']['id_tai_khoan']);
+            $listdonhang = load_donhang($_SESSION['ten_dang_nhap']['id_tai_khoan']);
 
             include "view/giohang/listdonhang.php";
             break;
@@ -306,7 +322,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $dia_chi = $_POST['dia_chi'];
                 $sdt = $_POST['sdt'];
                 $id_tai_khoan = $_POST['id_tai_khoan'];
-                update_taikhoan($ho_ten, $id_tai_khoan, $ten_dang_nhap, $mat_khau, $email, $dia_chi, $sdt);
+                update_taikhoan($ho_ten, $ten_dang_nhap, $mat_khau, $email, $dia_chi, $sdt, $id_tai_khoan);
                 $_SESSION['ten_dang_nhap'] = check_user($ten_dang_nhap, $mat_khau);
                 $thongbao = "Cập nhật tài khoản thành công!";
                 header("Location: index.php?act=edittaikhoan");

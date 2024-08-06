@@ -197,16 +197,12 @@
 
         let regexSdt = /^0[1-9]\d{8}$/
         if (!regexSdt.test(sdt.value)) {
-            g
             sdt_err.innerHTML = "Số điện thoại phải có 10 số và bắt đầu là số 0"
             kt = false
         } else {
             sdt_err.innerHTML = ""
 
         }
-
-
-
 
         return kt;
     }

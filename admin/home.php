@@ -10,11 +10,9 @@
         padding: 0;
         width: 100%;
         height: 100vh;
-        background: url('banner-thiet-ke-noi-that.jpg')no-repeat;
+        background: url('noi.jpg')no-repeat;
         background-position: center;
         background-size: cover;
-
-
 
     }
 
