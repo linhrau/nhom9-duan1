@@ -1,31 +1,7 @@
-<?php
-require_once 'model/pdo.php';
-
-$sql = "SELECT id_danh_muc, ten_danh_muc FROM danh_muc";
-$danhmuc = pdo_query($sql);
-
-session_start();
-
-if (!isset($_SESSION['user'])) {
-    header("Location: login.php");
-    exit();
-}
-
-$user_id = $_SESSION['user']['id_tai_khoan'];
-
-function get_cart_items($user_id)
-{
-    $sql = "SELECT * FROM cart inner join san_pham on cart.id_san_pham  = san_pham.id_san_pham WHERE cart.id_tai_khoan = :user_id";
-    $params = [':user_id' => $user_id];
-    return pdo_query($sql, $params);
-}
-
-$cart_items = get_cart_items($user_id);
-?>
-
-
 <!doctype html>
 <html class="no-js" lang="zxx">
+
+<!-- Mirrored from template.hasthemes.com/uniqlo/uniqlo/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Jul 2024 10:06:57 GMT -->
 
 <head>
     <meta charset="utf-8">
@@ -39,27 +15,26 @@ $cart_items = get_cart_items($user_id);
     <link rel="apple-touch-icon" href="apple-touch-icon.html">
 
     <!-- Bootstrap Fremwork Main Css -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- All Plugins css -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/plugins.css">
+    <link rel="stylesheet" href="css/plugins.css">
     <!-- Theme shortcodes/elements style -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/shortcode/shortcodes.css">
+    <link rel="stylesheet" href="css/shortcode/shortcodes.css">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/style.css">
+    <link rel="stylesheet" href="style.css">
     <!-- Responsive css -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/responsive.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <!-- User style -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/custom.css">
+    <link rel="stylesheet" href="css/custom.css">
 
     <!-- Modernizr JS -->
-    <script src="uniqlo/uniqlo/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
 </head>
 
 <body>
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
     <!-- Body main wrapper start -->
     <div class="wrapper fixed__footer">
         <!-- Start Header Style -->
@@ -70,8 +45,8 @@ $cart_items = get_cart_items($user_id);
                     <div class="row align-items-center">
                         <div class="col-md-2 col-lg-2 col-6">
                             <div class="logo">
-                                <a href="index.php">
-                                    <img src="uniqlo/uniqlo/images/logo/uniqlo.png" alt="logo">
+                                <a href="index.php?act=shop">
+                                    <img src="uniqlo/images/logo/uniqlo.png" alt="logo">
                                 </a>
                             </div>
                         </div>
@@ -79,25 +54,23 @@ $cart_items = get_cart_items($user_id);
                         <div class="col-md-8 col-lg-8 d-none d-md-block">
                             <nav class="mainmenu__nav  d-none d-lg-block">
                                 <ul class="main__menu">
-                                    <li class="drop"><a href="index.php">Trang chủ</a>
-
+                                    <li class="drop"><a href="index.php?act=shop">Trang chủ</a>
                                     </li>
-
-                                    <li class="drop">
-                                        <a href="index.php?act=listdanhmuc">Danh mục</a>
+                                    <li class="drop"><a href="blog.html">Danh mục</a>
                                         <ul class="dropdown">
-                                            <?php
-                                            foreach ($danhmuc as $dm) {
+                                            <?php foreach ($dsdm as $dm) {
                                                 extract($dm);
-                                                $linkdm = "index.php?act=listdanhmuc&id_danh_muc=" . $id_danh_muc;
-                                                echo '<li><a href="' . $linkdm . '">' . htmlspecialchars($ten_danh_muc) . '</a></li>';
-                                            }
                                             ?>
+                                            <li><a
+                                                    href="index.php?act=shop&id_danh_muc=<?= $id_danh_muc ?>"><?= $ten_danh_muc ?></a>
+                                            </li>
+                                            <?php } ?>
                                         </ul>
                                     </li>
+                                    <li><a href="index.php?act=contact">Liên hệ</a></li>
 
-                                    <li><a href="./contact.php">Liên hệ</a></li>
                                 </ul>
+
                             </nav>
 
                         </div>
@@ -105,13 +78,8 @@ $cart_items = get_cart_items($user_id);
                         <div class="col-md-2 col-lg-2 col-6">
                             <ul class="menu-extra">
                                 <li class="search search__open d-none d-sm-block"><span class="ti-search"></span></li>
-                                <?php if (isset($_SESSION['user'])) : ?>
-                                <li><a href="profile.php"><span class="ti-user"></span>
-                                        <?php echo htmlspecialchars($_SESSION['user']['ho_ten']); ?></a></li>
-                                <li><a href="logout.php">Logout</a></li>
-                                <?php else : ?>
-                                <li><a href="login.php"><span class="ti-user"></span></a></li>
-                                <?php endif; ?>
+                                <li><a href="index.php?act=login"><span class="ti-user">
+                                        </span></a></li>
                                 <li class="cart__menu"><span class="ti-shopping-cart"></span></li>
 
                             </ul>
@@ -288,182 +256,90 @@ $cart_items = get_cart_items($user_id);
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-12">
-                        <form id="cart-form" action="update_cart.php" method="POST">
+                        <form action="index.php?act=update-quantity-cart" method="post">
                             <div class="table-content table-responsive">
+                                <?php if (!empty($_SESSION['mycart'])) {  ?>
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th class="product-thumbnail">Image</th>
-                                            <th class="product-name">Product</th>
-                                            <th class="product-price">Price</th>
-                                            <th class="product-quantity">Quantity</th>
-                                            <th class="product-subtotal">Total</th>
+                                            <th class="img">Ảnh</th>
+                                            <th class="ten_san_pham">Sản Phẩm</th>
+                                            <th class="product-price">Giá</th>
+                                            <th class="product-quantity">Mô Tả</th>
+                                            <th class="product-subtotal">Tổng tiền</th>
                                             <th class="product-remove">Remove</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php if (empty($cart_items)) : ?>
-                                        <tr>
-                                            <td colspan="6">Your cart is empty.</td>
-                                        </tr>
-                                        <?php else : ?>
-                                        <?php foreach ($cart_items as $item) : ?>
+                                        <?php
+                                            $total = 0;
+                                            foreach ($_SESSION['mycart'] as  $id => $cart) {
+                                                $total += $cart[5];
+                                            ?>
                                         <tr>
                                             <td class="product-thumbnail">
-                                                <a href="#"><img src="img/<?php echo htmlspecialchars($item['img']); ?>"
-                                                        alt="product img" /></a>
+                                                <a href="#">
+                                                    <img src="<?= $cart[1] ?>" alt="product img" />
+                                                </a>
                                             </td>
-                                            <td class="product-name"><a
-                                                    href="#"><?php echo htmlspecialchars($item['ten_san_pham']); ?></a>
-                                            </td>
+                                            <td class="product-name"><a href="#"><?= $cart[2] ?></a></td>
                                             <td class="product-price"><span
-                                                    class="amount">£<?php echo number_format($item['gia'], 2); ?></span>
-                                            </td>
+                                                    class="amount"><?= number_format($cart[3], 0) ?></span></td>
                                             <td class="product-quantity">
-                                                <input type="number" class="quantity"
-                                                    data-product-id="<?php echo htmlspecialchars($item['id_san_pham']); ?>"
-                                                    value="<?php echo htmlspecialchars($item['soluong']); ?>" min="1" />
+                                                <input type="number" name="quantity[<?= $id ?>]" value="<?= $cart[4] ?>"
+                                                    min="1" />
+                                                <input type="hidden" name="id[<?= $id ?>]" value="<?= $id ?>" />
                                             </td>
-                                            <td class="product-subtotal">
-                                                £<?php echo number_format($item['thanh_tien'], 2); ?></td>
-                                            <td class="product-remove"><a
-                                                    href="update_cart.php?remove_id=<?php echo htmlspecialchars($item['id_san_pham']); ?>"
-                                                    class="remove-item"
-                                                    data-product-id="<?php echo htmlspecialchars($item['id_san_pham']); ?>">X</a>
+                                            <td class="product-subtotal"><?= number_format($cart[5], 0) ?></td>
+                                            <td class="product-remove">
+                                                <a onclick="return confirm('Bạn có muôn xóa sản phẩm này không?')"
+                                                    href="index.php?act=delcart&id=<?= $cart[0] ?>">X</a>
                                             </td>
                                         </tr>
-                                        <?php endforeach; ?>
-                                        <?php endif; ?>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
+                                <?php } else { ?>
+                                <div class="alert alert-danger">Không có sản phẩm nào trong giỏ hàng cả</div>
+                                <?php } ?>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 col-sm-12">
                                     <div class="buttons-cart">
-                                        <a href="#">Continue Shopping</a>
+                                        <input name="updateCart" type="submit" value="Update Cart" />
+                                        <a href="index.php?act=shop">Continue Shopping</a>
                                     </div>
                                     <div class="coupon">
                                         <h3>Coupon</h3>
                                         <p>Enter your coupon code if you have one.</p>
-                                        <input type="text" name="coupon_code" placeholder="Coupon code" />
+                                        <input type="text" placeholder="Coupon code" />
                                         <input type="submit" value="Apply Coupon" />
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-12 ">
                                     <div class="cart_totals">
-                                        <h2>Cart Totals</h2>
+                                        <h2>Tổng thanh toán</h2>
                                         <table>
                                             <tbody>
-                                                <?php
-                                                $subtotal = array_sum(array_column($cart_items, 'thanh_tien')); // Calculate subtotal
-                                                $shipping_cost = 7.00; // Example shipping cost
-                                                $total = $subtotal + $shipping_cost;
-                                                ?>
-                                                <tr class="cart-subtotal">
-                                                    <th>Subtotal</th>
-                                                    <td><span
-                                                            class="amount">£<?php echo number_format($subtotal, 2); ?></span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="shipping">
-                                                    <th>Shipping</th>
-                                                    <td>
-                                                        <ul id="shipping_method">
-                                                            <li>
-                                                                <input type="radio" id="ShippingMethod1"
-                                                                    name="flexRadioShippingMethod" />
-                                                                <label for="ShippingMethod1">
-                                                                    Flat Rate: <span
-                                                                        class="amount">£<?php echo number_format($shipping_cost, 2); ?></span>
-                                                                </label>
-                                                            </li>
-                                                            <li>
-                                                                <input type="radio" id="ShippingMethod2"
-                                                                    name="flexRadioShippingMethod" />
-                                                                <label for="ShippingMethod2">
-                                                                    Free Shipping
-                                                                </label>
-                                                            </li>
-                                                        </ul>
-                                                        <p><a class="shipping-calculator-button" href="#">Calculate
-                                                                Shipping</a></p>
-                                                    </td>
-                                                </tr>
                                                 <tr class="order-total">
                                                     <th>Total</th>
                                                     <td>
                                                         <strong><span
-                                                                class="amount">£<?php echo number_format($total, 2); ?></span></strong>
+                                                                class="amount"><?= number_format($total, 0) ?? '' ?></span></strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="wc-proceed-to-checkout">
+                                                        <a href="index.php?act=dathang">Thanh toán</a>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <div class="wc-proceed-to-checkout">
-                                            <a href="checkout.html">Proceed to Checkout</a>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </form>
-
-                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                        <script>
-                        $(document).ready(function() {
-                            // Handle quantity change
-                            $('.quantity').on('change', function() {
-                                var productId = $(this).data('product-id');
-                                var quantity = $(this).val();
-
-                                $.ajax({
-                                    url: 'update_cart.php',
-                                    method: 'POST',
-                                    data: {
-                                        action: 'update_quantity',
-                                        product_id: productId,
-                                        quantity: quantity
-                                    },
-                                    success: function(response) {
-                                        var data = JSON.parse(response);
-                                        if (data.status === 'success') {
-                                            location.reload();
-                                        } else {
-                                            alert('Error: ' + data.message);
-                                        }
-                                    },
-                                    error: function(xhr, status, error) {
-                                        console.error('Error updating cart:', error);
-                                    }
-                                });
-                            });
-
-                            // Handle remove item click
-                            $('.remove-item').on('click', function(e) {
-                                e.preventDefault();
-                                var productId = $(this).data('product-id');
-
-                                $.ajax({
-                                    url: 'update_cart.php',
-                                    method: 'POST',
-                                    data: {
-                                        action: 'remove_item',
-                                        product_id: productId
-                                    },
-                                    success: function(response) {
-                                        var data = JSON.parse(response);
-                                        if (data.status === 'success') {
-                                            location.reload();
-                                        } else {
-                                            alert('Error: ' + data.message);
-                                        }
-                                    },
-                                    error: function(xhr, status, error) {
-                                        console.error('Error removing item from cart:',
-                                            error);
-                                    }
-                                });
-                            });
-                        });
-                        </script>
                     </div>
                 </div>
             </div>
@@ -478,8 +354,8 @@ $cart_items = get_cart_items($user_id);
                     <div class="col-md-6 col-lg-3 col-sm-6">
                         <div class="ft__widget">
                             <div class="ft__logo">
-                                <a href="index.html">
-                                    <img src="images/logo/uniqlo.png" alt="footer logo">
+                                <a href="index.php?act=shop">
+                                    <img src="uniqlo/images/logo/uniqlo.png" alt="footer logo">
                                 </a>
                             </div>
                             <div class="footer__details">
@@ -508,7 +384,8 @@ $cart_items = get_cart_items($user_id);
                                                 <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                                                 <div style="position: absolute; left: -5000px;" aria-hidden="true">
                                                     <input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef"
-                                                        tabindex="-1" value=""></div>
+                                                        tabindex="-1" value="">
+                                                </div>
                                                 <div class="clearfix subscribe__btn"><input type="submit" value="Send"
                                                         name="subscribe" id="mc-embedded-subscribe"
                                                         class="bst__btn btn--white__color">
@@ -577,15 +454,15 @@ $cart_items = get_cart_items($user_id);
     <!-- Placed js at the end of the document so the pages load faster -->
 
     <!-- jquery latest version -->
-    <script src="uniqlo/uniqlo/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="uniqlo/uniqlo/js/vendor/jquery-migrate-3.3.2.min.js"></script>
-    <script src="uniqlo/uniqlo/js/vendor/jquery.waypoints.js"></script>
+    <script src="js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="js/vendor/jquery-migrate-3.3.2.min.js"></script>
+    <script src="js/vendor/jquery.waypoints.js"></script>
     <!-- Bootstrap Framework js -->
-    <script src="uniqlo/uniqlo/js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
     <!-- All js plugins included in this file. -->
-    <script src="uniqlo/uniqlo/js/plugins.js"></script>
+    <script src="js/plugins.js"></script>
     <!-- Main js file that contents all jQuery plugins activation. -->
-    <script src="uniqlo/uniqlo/js/main.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 

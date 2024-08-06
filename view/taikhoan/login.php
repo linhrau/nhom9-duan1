@@ -1,49 +1,12 @@
-<?php
-require 'vendor/autoload.php';
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-if (
-    $_SERVER["REQUEST_METHOD"] === "POST" &&
-    isset($_POST['subject'], $_POST['name'], $_POST['email'], $_POST['message'])
-) {
-    $mail = new PHPMailer(true);
-    try {
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'chuyendizz@gmail.com';
-        $mail->Password = 'yluz xlcd jhbk eyzi';
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
-
-        $mail->setFrom('chuyendizz@gmail.com', 'Your Name');
-        $mail->addAddress('chuyendizz@gmail.com', 'Admin');
-
-        $mail->isHTML(false);
-        $mail->Subject = htmlspecialchars($_POST['subject']);
-        $mail->Body    = "Name: " . htmlspecialchars($_POST['name']) . "\n" .
-            "Email: " . htmlspecialchars($_POST['email']) . "\n" .
-            "Message:\n" . htmlspecialchars($_POST['message']);
-
-        $mail->send();
-        echo '<script>alert("Email sent successfully!")</script>';
-    } catch (Exception $e) {
-        echo "Failed to send email. Error: {$mail->ErrorInfo}";
-    }
-}
-?>
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 
-<!-- Mirrored from template.hasthemes.com/uniqlo/uniqlo/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Jul 2024 10:07:01 GMT -->
+<!-- Mirrored from template.hasthemes.com/uniqlo/uniqlo/login-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Jul 2024 10:07:01 GMT -->
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Contact US || Uniqlo-Minimalist eCommerce Bootstrap 5 Template</title>
+    <title>LogIn Ragister || Uniqlo-Minimalist eCommerce Bootstrap 5 Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -52,20 +15,20 @@ if (
     <link rel="apple-touch-icon" href="apple-touch-icon.html">
 
     <!-- Bootstrap Fremwork Main Css -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- All Plugins css -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/plugins.css">
+    <link rel="stylesheet" href="css/plugins.css">
     <!-- Theme shortcodes/elements style -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/shortcode/shortcodes.css">
+    <link rel="stylesheet" href="css/shortcode/shortcodes.css">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/style.css">
+    <link rel="stylesheet" href="style.css">
     <!-- Responsive css -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/responsive.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <!-- User style -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/custom.css">
+    <link rel="stylesheet" href="css/custom.css">
 
     <!-- Modernizr JS -->
-    <script src="uniqlo/uniqlo/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
 </head>
 
 <body>
@@ -83,8 +46,8 @@ if (
                     <div class="row align-items-center">
                         <div class="col-md-2 col-lg-2 col-6">
                             <div class="logo">
-                                <a href="index.php">
-                                    <img src="uniqlo/uniqlo/images/logo/uniqlo.png" alt="logo">
+                                <a href="index.php?act=shop">
+                                    <img src="uniqlo/images/logo/uniqlo.png" alt="logo">
                                 </a>
                             </div>
                         </div>
@@ -92,25 +55,23 @@ if (
                         <div class="col-md-8 col-lg-8 d-none d-md-block">
                             <nav class="mainmenu__nav  d-none d-lg-block">
                                 <ul class="main__menu">
-                                    <li class="drop"><a href="index.php">Trang chủ</a>
-
+                                    <li class="drop"><a href="index.php?act=shop">Trang chủ</a>
                                     </li>
-
-                                    <li class="drop">
-                                        <a href="index.php?act=listdanhmuc">Danh mục</a>
+                                    <li class="drop"><a href="blog.html">Danh mục</a>
                                         <ul class="dropdown">
-                                            <?php
-                                            foreach ($danhmuc as $dm) {
+                                            <?php foreach ($dsdm as $dm) {
                                                 extract($dm);
-                                                $linkdm = "index.php?act=listdanhmuc&id_danh_muc=" . $id_danh_muc;
-                                                echo '<li><a href="' . $linkdm . '">' . htmlspecialchars($ten_danh_muc) . '</a></li>';
-                                            }
                                             ?>
+                                            <li><a
+                                                    href="index.php?act=shop&id_danh_muc=<?= $id_danh_muc ?>"><?= $ten_danh_muc ?></a>
+                                            </li>
+                                            <?php } ?>
                                         </ul>
                                     </li>
+                                    <li><a href="index.php?act=contact">Liên hệ</a></li>
 
-                                    <li><a href="./contact.php">Liên hệ</a></li>
                                 </ul>
+
                             </nav>
 
                         </div>
@@ -118,13 +79,8 @@ if (
                         <div class="col-md-2 col-lg-2 col-6">
                             <ul class="menu-extra">
                                 <li class="search search__open d-none d-sm-block"><span class="ti-search"></span></li>
-                                <?php if (isset($_SESSION['user'])) : ?>
-                                <li><a href="profile.php"><span class="ti-user"></span>
-                                        <?php echo htmlspecialchars($_SESSION['user']['ho_ten']); ?></a></li>
-                                <li><a href="logout.php">Logout</a></li>
-                                <?php else : ?>
-                                <li><a href="login.php"><span class="ti-user"></span></a></li>
-                                <?php endif; ?>
+                                <li><a href="index.php?act=login"><span class="ti-user">
+                                        </span></a></li>
                                 <li class="cart__menu"><span class="ti-shopping-cart"></span></li>
 
                             </ul>
@@ -136,6 +92,7 @@ if (
             <!-- End Mainmenu Area -->
         </header>
         <!-- End Header Style -->
+
         <div class="body__overlay"></div>
         <!-- Start Offset Wrapper -->
         <div class="offset__wrapper">
@@ -187,6 +144,7 @@ if (
                         <div class="offset__single">
                             <h4 class="offset__title">Language</h4>
                             <ul>
+                                <li><a href="#"> Vietnamese </a></li>
                                 <li><a href="#"> Engish </a></li>
                                 <li><a href="#"> French </a></li>
                                 <li><a href="#"> German </a></li>
@@ -274,114 +232,47 @@ if (
             <!-- End Cart Panel -->
         </div>
         <!-- End Offset Wrapper -->
-        <!-- Start Bradcaump area -->
-        <div class="ht__bradcaump__area"
-            style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center / cover ;">
-            <div class="ht__bradcaump__wrap">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="bradcaump__inner text-center">
-                                <h2 class="bradcaump-title">Contact US</h2>
-                                <nav class="bradcaump-inner">
-                                    <a class="breadcrumb-item" href="index.html">Home</a>
-                                    <span class="brd-separetor">/</span>
-                                    <span class="breadcrumb-item active">Contact US</span>
-                                </nav>
-                            </div>
-                        </div>
+        <!-- Start Login Register Area -->
+        <div class="htc__login__register bg__white ptb--130"
+            style="background: rgba(0, 0, 0, 0) url(images/bg/5.jpg) no-repeat scroll center center / cover ;">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <ul class="login__register__menu nav justify-contend-center" role="tablist">
+                            <li role="presentation" class="login active"><a class="active" href="#login" role="tab"
+                                    data-bs-toggle="tab">Login</a></li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- End Bradcaump area -->
-        <!-- Start Contact Area -->
-        <section class="htc__contact__area ptb--120 bg__white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-lg-6 col-sm-12">
-                        <div class="htc__contact__container">
-                            <div class="htc__contact__address">
-                                <h2 class="contact__title">contact info</h2>
-                                <div class="contact__address__inner">
-                                    <!-- Start Single Adress -->
-                                    <div class="single__contact__address">
-                                        <div class="contact__icon">
-                                            <span class="ti-location-pin"></span>
-                                        </div>
-                                        <div class="contact__details">
-                                            <p>Location : <br> 77, seventh avenue, Brat road USA.</p>
-                                        </div>
+                <!-- Start Login Register Content -->
+                <div class="row tab-content justify-content-center">
+                    <div class="col-md-6  ml-auto mr-auto">
+                        <div class="htc__login__register__wrap">
+                            <!-- Start Single Content -->
+                            <div id="login" role="tabpanel" class="single__tabs__panel tab-pane active">
+                                <?php if (isset($thongbao)) {
+                                    echo '<div class="alert alert-danger" role="alert">' . $thongbao . '</div>';
+                                } ?>
+                                <form class="login" action="index.php?act=login" method="post">
+                                    <input name="ten_dang_nhap" type="text" placeholder="User Name*">
+                                    <input name="mat_khau" type="password" placeholder="Password*">
+
+                                    <div class="tabs__checkbox">
+                                        <span> Remember me</span>
+                                        <span class="forget"><a href="index.php?act=quenmk">Forget Pasword?</a></span>
                                     </div>
-                                    <!-- End Single Adress -->
-                                </div>
-                                <div class="contact__address__inner">
-                                    <!-- Start Single Adress -->
-                                    <div class="single__contact__address">
-                                        <div class="contact__icon">
-                                            <span class="ti-mobile"></span>
-                                        </div>
-                                        <div class="contact__details">
-                                            <p> Phone : <br><a href="#">+00 111 222 333 44</a></p>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Adress -->
-                                    <!-- Start Single Adress -->
-                                    <div class="single__contact__address">
-                                        <div class="contact__icon">
-                                            <span class="ti-email"></span>
-                                        </div>
-                                        <div class="contact__details">
-                                            <p> Mail :<br><a href="#">yourmail@gmail.com</a></p>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Adress -->
-                                </div>
-                            </div>
-                            <div class="contact-form-wrap">
-                                <div class="contact-title">
-                                    <h2 class="contact__title">Get In Touch</h2>
-                                </div>
-                                <form id="contact-form" method="POST">
-                                    <div class="single-contact-form">
-                                        <div class="contact-box name">
-                                            <input type="text" name="name" placeholder="Your Name*" required>
-                                            <input type="email" name="email" placeholder="Mail*" required>
-                                        </div>
-                                    </div>
-                                    <div class="single-contact-form">
-                                        <div class="contact-box subject">
-                                            <input type="text" name="subject" placeholder="Subject*" required>
-                                        </div>
-                                    </div>
-                                    <div class="single-contact-form">
-                                        <div class="contact-box message">
-                                            <textarea name="message" placeholder="Message*" required></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="contact-btn">
-                                        <button type="submit" class="fv-btn">SEND</button>
+                                    <div class="htc__login__btn mt--30">
+                                        <input name="login" class="btn btn-primary" type="submit" value="Login">
                                     </div>
                                 </form>
-
-                            </div>
-                            <div class="form-output">
-                                <p class="form-messege"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-6 col-sm-12 smt-30 xmt-30">
-                        <div class="map-contacts">
-                            <div id="googleMap">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d805013.3836084771!2d144.90479390722828!3d-37.98684752626679!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad646b5d2ba4df7%3A0x4045675218ccd90!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sbd!4v1641877133460!5m2!1sen!2sbd"></iframe>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- End Login Register Content -->
             </div>
-        </section>
-        <!-- End Contact Area -->
+        </div>
+        <!-- End Login Register Area -->
         <!-- Start Footer Area -->
         <footer class="htc__foooter__area"
             style="background: rgba(0, 0, 0, 0) url(images/bg/1.jpg) no-repeat scroll center center / cover ;">
@@ -488,24 +379,22 @@ if (
         <!-- End Footer Area -->
     </div>
     <!-- Body main wrapper end -->
-
     <!-- Placed js at the end of the document so the pages load faster -->
 
     <!-- jquery latest version -->
     <script src="js/vendor/jquery-3.6.0.min.js"></script>
     <script src="js/vendor/jquery-migrate-3.3.2.min.js"></script>
     <script src="js/vendor/jquery.waypoints.js"></script>
-    <!-- Bootstrap framework js -->
+    <!-- Bootstrap Framework js -->
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- All js plugins included in this file. -->
     <script src="js/plugins.js"></script>
-
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="js/main.js"></script>
 
 </body>
 
 
-<!-- Mirrored from template.hasthemes.com/uniqlo/uniqlo/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Jul 2024 10:07:01 GMT -->
+<!-- Mirrored from template.hasthemes.com/uniqlo/uniqlo/login-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Jul 2024 10:07:01 GMT -->
 
 </html>

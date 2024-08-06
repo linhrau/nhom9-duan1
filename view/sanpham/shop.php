@@ -78,46 +78,56 @@
                    </div>
                    <!-- End Product MEnu -->
                    <div class="row product__list">
-                       <?php
-                        if (isset($dssp) && is_array($dssp)) {
-                            foreach ($dssp as $product) {
-                                $id_san_pham = htmlspecialchars($product['id_san_pham']);
-                                $ten_san_pham = htmlspecialchars($product['ten_san_pham']);
-                                $hinh_anh = htmlspecialchars($product['img']);
-                                $gia = htmlspecialchars($product['gia']);
-                                $mo_ta_sp = htmlspecialchars($product['mo_ta_sp']);
 
-                                echo '<div class="col-md-4 single__pro col-lg-3 cat--1 col-sm-12">';
-                                echo '    <div class="product foo">';
-                                echo '        <div class="product__inner">';
-                                echo '            <div class="pro__thumb">';
-                                echo '                <a href="product-details.php?id_san_pham=' . $id_san_pham . '">';
-                                echo '                    <img src="img/' . $hinh_anh . '" alt="' . $ten_san_pham . '">';
-                                echo '                </a>';
-                                echo '            </div>';
-                                echo '            <div class="product__hover__info">';
-                                echo '                <ul class="product__action">';
-                                echo '                    <li><a data-bs-toggle="modal" data-bs-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>';
-                                echo '                    <li><a title="Add TO Cart" href="cart.php"><span class="ti-shopping-cart"></span></a></li>';
-                                echo '                </ul>';
-                                echo '            </div>';
-                                echo '            <div class="add__to__wishlist">';
-                                echo '                <a data-bs-toggle="tooltip" title="Add To Wishlist" class="add-to-cart" href="wishlist.php"><span class="ti-heart"></span></a>';
-                                echo '            </div>';
-                                echo '        </div>';
-                                echo '        <div class="product__details">';
-                                echo '            <h2><a href="index.php?act=chitietsp&id_san_pham=' . $id_san_pham . '">' . htmlspecialchars($ten_san_pham) . '</a></h2>';
-                                echo '            <ul class="product__price">';
-                                echo '                <li class="new__price">' . number_format($gia, 0, ',', '.') . 'đ</li>';
-                                echo '            </ul>';
-                                echo '        </div>';
-                                echo '    </div>';
-                                echo '</div>';
-                            }
-                        } else {
-                            echo '<p>No products available in this category.</p>';
-                        }
+                       <!-- Start Single Product -->
+                       <div class="row">
+                           <?php 
+                            $i = 0;
+                            foreach($dssp as $sp){
+                                extract($sp);
+                                $img = $img_path.$img;
+                                $linksp="index.php?act=chitietsp&idsp=".$id_san_pham;
                         ?>
+                           <div class="col-md-3 col-sm-6 single__pro">
+                               <div class="product foo">
+                                   <div class="product__inner">
+                                       <div class="pro__thumb">
+                                           <a href="<?php echo $linksp; ?>">
+                                               <img src="<?php echo $img; ?>" alt="product images">
+                                           </a>
+                                       </div>
+                                       <div class="product__hover__info">
+                                           <ul class="product__action">
+                                               <li><a data-bs-toggle="modal" data-bs-target="#productModal"
+                                                       title="Quick View" class="quick-view modal-view detail-link"
+                                                       href="#"><span class="ti-plus"></span></a></li>
+                                               <li><a title="Add TO Cart" href="cart.html"><span
+                                                           class="ti-shopping-cart"></span></a></li>
+                                           </ul>
+                                       </div>
+                                       <div class="add__to__wishlist">
+                                           <a data-bs-toggle="tooltip" title="Add To Wishlist" class="add-to-cart"
+                                               href="wishlist.html"><span class="ti-heart"></span></a>
+                                       </div>
+                                   </div>
+                                   <div class="product__details">
+                                       <h2><a href="<?php echo $linksp; ?>"><?php echo $ten_san_pham; ?></a></h2>
+                                       <ul class="product__price">
+                                           <li class="price"><?php echo number_format($gia, 0, ',', '.').'đ'; ?></li>
+                                       </ul>
+                                   </div>
+                               </div>
+                           </div>
+                           <?php 
+                                $i++;
+                                if($i % 4 == 0){
+                                    echo '</div><div class="row">';
+                                }
+                            }
+                            ?>
+                       </div>
+
+                       <!-- End Single Product -->
                    </div>
                </div>
            </div>
