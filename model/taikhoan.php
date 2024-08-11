@@ -30,7 +30,7 @@ function loadall_taikhoan()
 }
 function check_user($ten_dang_nhap, $mat_khau)
 {
-    $sql = "SELECT * FROM tai_khoan WHERE ten_dang_nhap='" . $ten_dang_nhap . "' AND mat_khau='" . $mat_khau . "'";
+    $sql = "SELECT *FROM tai_khoan WHERE ten_dang_nhap='" . $ten_dang_nhap . "' AND mat_khau='" . $mat_khau . "'";
     $sp = pdo_query_one($sql);
     return $sp;
 }

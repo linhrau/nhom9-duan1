@@ -14,11 +14,11 @@ function loadall_lienhe($id_lien_he)
     $listlh = pdo_query($sql);
     return $listlh;
 }
-function insert_lienhe($ho_ten, $email, $sdt, $noi_dung)
+function insert_lienhe($id_lien_he, $ho_ten, $email, $sdt, $noi_dung)
 {
     $sql = "
-        INSERT INTO lien_he( ho_ten, email, sdt,noi_dung) 
-        VALUES ('$ho_ten','$email','$sdt' ,'$noi_dung');
+        INSERT INTO lien_he( id_lien_he, ho_ten, email, sdt, noi_dung) 
+        VALUES ('$id_lien_he','$ho_ten','$email' ,'$sdt', '$noi_dung');
     ";
     pdo_execute($sql);
 }
@@ -29,9 +29,9 @@ function delete_lienhe($id_lien_he)
     pdo_execute($sql);
 }
 
-function get_ttlh($n)
+function get_ttlh($tt)
 {
-    switch ($n) {
+    switch ($tt) {
         case '0':
             $tt = "Chưa Phản Hồi";
             break;

@@ -1,10 +1,3 @@
-<?php
-require_once 'model/pdo.php';
-
-$sql = "SELECT id_danh_muc, ten_danh_muc FROM danh_muc";
-$danhmuc = pdo_query($sql);
-?>
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -22,20 +15,20 @@ $danhmuc = pdo_query($sql);
     <link rel="apple-touch-icon" href="apple-touch-icon.html">
 
     <!-- Bootstrap Fremwork Main Css -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/bootstrap.min.css">
+    <link rel="stylesheet" href="uniqlo/css/bootstrap.min.css">
     <!-- All Plugins css -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/plugins.css">
+    <link rel="stylesheet" href="uniqlo/css/plugins.css">
     <!-- Theme shortcodes/elements style -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/shortcode/shortcodes.css">
+    <link rel="stylesheet" href="uniqlo/css/shortcode/shortcodes.css">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/style.css">
+    <link rel="stylesheet" href="uniqlo/style.css">
     <!-- Responsive css -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/responsive.css">
+    <link rel="stylesheet" href="uniqlo/css/responsive.css">
     <!-- User style -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/custom.css">
+    <link rel="stylesheet" href="uniqlo/css/custom.css">
 
     <!-- Modernizr JS -->
-    <script src="uniqlo/uniqlo/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="uniqlo/js/vendor/modernizr-3.11.2.min.js"></script>
 </head>
 
 <body>
@@ -53,8 +46,8 @@ $danhmuc = pdo_query($sql);
                     <div class="row align-items-center">
                         <div class="col-md-2 col-lg-2 col-6">
                             <div class="logo">
-                                <a href="index.php">
-                                    <img src="uniqlo/uniqlo/images/logo/uniqlo.png" alt="logo">
+                                <a href="index.php?act=shop">
+                                    <img src="uniqlo/images/logo/uniqlo.png" alt="logo">
                                 </a>
                             </div>
                         </div>
@@ -62,24 +55,20 @@ $danhmuc = pdo_query($sql);
                         <div class="col-md-8 col-lg-8 d-none d-md-block">
                             <nav class="mainmenu__nav  d-none d-lg-block">
                                 <ul class="main__menu">
-                                    <li class="drop"><a href="index.php">Trang chủ</a>
-
+                                    <li class="drop"><a href="index.php?act=shop">Trang chủ</a>
                                     </li>
-
-                                    <li class="drop">
-                                        <a href="index.php?act=listdanhmuc">Danh mục</a>
+                                    <li class="drop"><a href="blog.html">Danh mục</a>
                                         <ul class="dropdown">
-                                            <?php
-                                            foreach ($danhmuc as $dm) {
+                                            <?php foreach ($dsdm as $dm) {
                                                 extract($dm);
-                                                $linkdm = "index.php?act=listdanhmuc&id_danh_muc=" . $id_danh_muc;
-                                                echo '<li><a href="' . $linkdm . '">' . htmlspecialchars($ten_danh_muc) . '</a></li>';
-                                            }
                                             ?>
+                                                <li><a href="index.php?act=shop&id_danh_muc=<?= $id_danh_muc ?>"><?= $ten_danh_muc ?></a>
+                                                </li>
+                                            <?php } ?>
                                         </ul>
                                     </li>
-
-                                    <li><a href="./contact.php">Liên hệ</a></li>
+                                    <li><a href="index.php?act=contact">Liên hệ</a></li>
+                                    <li><a href="index.php?act=listdonhang">Đơn Hàng</a></li>
                                 </ul>
                             </nav>
 
@@ -88,13 +77,14 @@ $danhmuc = pdo_query($sql);
                         <div class="col-md-2 col-lg-2 col-6">
                             <ul class="menu-extra">
                                 <li class="search search__open d-none d-sm-block"><span class="ti-search"></span></li>
-                                <?php if (isset($_SESSION['user'])) : ?>
-                                <li><a href="profile.php"><span class="ti-user"></span>
-                                        <?php echo htmlspecialchars($_SESSION['user']['ho_ten']); ?></a></li>
-                                <li><a href="logout.php">Logout</a></li>
-                                <?php else : ?>
-                                <li><a href="login.php"><span class="ti-user"></span></a></li>
-                                <?php endif; ?>
+                                <li>
+                                    <a href="index.php?act=thongtin">
+                                        <span class="ti-user"></span>
+                                    </a>
+                                    <a href="index.php?act=dangnhap">Đăng nhập/ </a>
+                                    <a href="index.php?act=dangky">Đăng ký</a>
+                                </li>
+
                                 <li class="cart__menu"><span class="ti-shopping-cart"></span></li>
 
                             </ul>
@@ -118,7 +108,7 @@ $danhmuc = pdo_query($sql);
                             <!-- TÌM KIẾM -->
                             <div class="search__inner">
                                 <form action="#" method="get">
-                                    <input placeholder="Tìm kiếm " type="submit" name="clickOK" id="">
+                                    <input placeholder="Tìm kiếm " type="text" name="keyword" id="">
                                     <button type="submit"></button>
                                 </form>
                                 <div class="search__close__btn">
@@ -139,21 +129,21 @@ $danhmuc = pdo_query($sql);
                     <div class="off__contact">
                         <div class="logo">
                             <a href="index.html">
-                                <img src="uniqlo/uniqlo/images/logo/uniqlo.png" alt="logo">
+                                <img src="uniqlo/images/logo/uniqlo.png" alt="logo">
                             </a>
                         </div>
                         <p>Lorem ipsum dolor sit amet consectetu adipisicing elit sed do eiusmod tempor incididunt ut
                             labore.</p>
                     </div>
                     <ul class="sidebar__thumd">
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/1.jpg" alt="sidebar images"></a></li>
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/2.jpg" alt="sidebar images"></a></li>
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/3.jpg" alt="sidebar images"></a></li>
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/4.jpg" alt="sidebar images"></a></li>
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/5.jpg" alt="sidebar images"></a></li>
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/6.jpg" alt="sidebar images"></a></li>
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/7.jpg" alt="sidebar images"></a></li>
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/8.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/1.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/2.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/3.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/4.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/5.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/6.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/7.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/8.jpg" alt="sidebar images"></a></li>
                     </ul>
 
                 </div>
@@ -169,7 +159,7 @@ $danhmuc = pdo_query($sql);
                         <div class="shp__single__product">
                             <div class="shp__pro__thumb">
                                 <a href="#">
-                                    <img src="uniqlo/uniqlo/images/product/sm-img/1.jpg" alt="product images">
+                                    <img src="uniqlo/images/product/sm-img/1.jpg" alt="product images">
                                 </a>
                             </div>
                             <div class="shp__pro__details">
@@ -184,7 +174,7 @@ $danhmuc = pdo_query($sql);
                         <div class="shp__single__product">
                             <div class="shp__pro__thumb">
                                 <a href="#">
-                                    <img src="uniqlo/uniqlo/images/product/sm-img/2.jpg" alt="product images">
+                                    <img src="uniqlo/images/product/sm-img/2.jpg" alt="product images">
                                 </a>
                             </div>
                             <div class="shp__pro__details">
@@ -202,7 +192,7 @@ $danhmuc = pdo_query($sql);
                         <li class="total__price">$130.00</li>
                     </ul>
                     <ul class="shopping__btn">
-                        <li><a href="cart.php">View Cart</a></li>
+                        <li><a href="index.php?act=giohang">View Cart</a></li>
                         <li class="shp__checkout"><a href="uniqlo/checkout.html">Checkout</a></li>
                     </ul>
                 </div>
