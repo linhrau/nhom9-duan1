@@ -22,32 +22,32 @@
             <th>Email</th>
             <th>Số điện thoại</th>
             <th>Nội dung</th>
-            <th>Tình trạng đơn</th>
+            <th>Trạng Thái</th>
             <th>Lựa chọn</th>
 
           </tr>
         </thead>
         <tbody class="table-border-bottom-0">
           <?php
-          foreach ($listlienhe as $lienhe) { // gtri và bảng danhmuc
-            extract($lienhe); //xô dl ra
+          foreach ($listlienhe as $lienhe) {
+            extract($lienhe);
             $sualh = "index.php?act=sualh&id=" . $id_lien_he;
             $xoalh = "index.php?act=xoalh&id=" . $id_lien_he;
 
             $ttlh = get_ttlh($lienhe["trang_thai"]);
 
 
-
             echo ' <tr>
-                    <td>LL' . $lienhe['id_lien_he'] . '</td>
+                    <td>' . $id_lien_he . '</td>
                     <td> ' . $ho_ten . '</td>
                     <td>' . $email . '</td>
                     <td>' . $sdt . '</td>
-                    <td>' . $noi_dung . '</td>
+                    <td>' . $noi_dung . '</td> 
                     <td>' . $ttlh . '</td>
 
 
                     <td><a href="' . $sualh . '"><i class="mdi mdi-pencil" style=" height:36px;margin: 15px; color: green"></i></a> <a href="' . $xoalh . '"> <i class="mdi mdi-delete" onclick="return confirm(\'Bạn có chắc chắn muốn xóa\')" style="color: green"></i> </a></td>
+                    
                     </tr>';
           }
           ?>

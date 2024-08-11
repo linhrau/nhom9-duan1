@@ -93,13 +93,13 @@
             <div class="row">
                 <h2 class="section-title-3">Chọn phương thức thanh toán</h2>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="pttt" value="0" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="pttt" value="0" id="flexRadioDefault1" checked>
                     <label class="form-check-label" for="flexRadioDefault1">
                         Thanh toán khi nhận hàng
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="pttt" value="1" id="flexRadioDefault2" checked>
+                    <input class="form-check-input" type="radio" name="pttt" value="1" id="flexRadioDefault2">
                     <label class="form-check-label" for="flexRadioDefault2">
                         Thanh toán Online
                     </label>

@@ -47,8 +47,7 @@
                     <td>' . $donhang['ngay_dat_hang'] . '</td>
                     <td>' . $ttdh . '</td>
 
-
-                    <td><a href="' . $suadh . '"><i class="mdi mdi-pencil" style=" height:36px;margin: 15px; color: green"></i></a> <a href="' . $xoadh . '"> <i class="mdi mdi-delete" onclick="return confirm(\'Bạn có chắc chắn muốn xóa\')" style="color: green"></i> </a></td>
+                    <td><a href="' . $suadh . '"><i class="mdi mdi-pencil" style=" height:36px;margin: 15px; color: green"></i></a> </td>
                     </tr>';
           }
           ?>

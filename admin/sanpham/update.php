@@ -16,7 +16,7 @@ if (is_file($hinhpath)) {
       <h5 class="mb-0">CẬP NHẬT THÔNG TIN SẢN PHẨM</h5>
     </div>
     <div class="card-body">
-      <form action="index.php?act=updatesp" method="POST">
+      <form action="index.php?act=updatesp" method="POST" enctype="multipart/form-data">
         <div class="row mb-3">
           <label class="col-sm-2 col-form-label" for="basic-default-name">Danh mục</label>
           <div class="col-sm-10">
@@ -24,7 +24,7 @@ if (is_file($hinhpath)) {
               <select class="form-select" name="id_danh_muc" id="id_danh_muc" aria-label="Default select example">
                 <option value="0" selected>Tất cả danh mục</option>
                 <?php
-                foreach ($listdanhmuc as $key => $value) {
+                foreach ($listdanhmuc as $value) {
                   if ($id_danh_muc == $value['id_danh_muc']) {
                     echo '<option value="' . $value['id_danh_muc'] . '" selected>' . $value['ten_danh_muc'] . '</option>';
                   } else {
@@ -75,11 +75,12 @@ if (is_file($hinhpath)) {
           <label class="col-sm-2 col-form-label" for="basic-default-message">Thêm ảnh sản phẩm</label>
           <div class="col-sm-10">
             <div class="input-group">
-              <input type="file" class="form-control" id="" name="hinh" />
-
-              <label class="input-group-text" for="inputGroupFile02">Upload</label>
+              <?php echo $hinhpath; // Hiển thị ảnh cũ 
+              ?>
+              <input type="file" name="hinh" id="">
+              <!-- Hiển thị tên file ảnh hiện tại -->
+              <div>Image: <?php echo $img; ?></div>
             </div>
-            <?= $hinhpath ?>
           </div>
 
           <div class="row mb10 ">

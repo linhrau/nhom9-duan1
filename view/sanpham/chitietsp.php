@@ -53,7 +53,7 @@
                             <div class="product-quantity">
                                 <div class="product-quantity">
                                     <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" name="soluong" type="text" name="qtybutton" value="02">
+                                        <input class="cart-plus-minus-box" name="soluong" type="text" name="qtybutton" value="1">
                                     </div>
                                     <input type="hidden" name="id_san_pham" value="<?= $id_san_pham ?>">
                                     <input type="hidden" name="img" value="<?= $img ?>">
@@ -80,52 +80,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="htc__product__comments pt--50 bg__white">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Customer Reviews</h2>
-                <div class="comment-form">
-                    <form method="POST">
-                        <input type="hidden" name="id_san_pham" value="<?= htmlspecialchars($id_san_pham) ?>" />
-                        <input type="hidden" name="id_tai_khoan" value="<?= htmlspecialchars($id_tai_khoan) ?>" />
-                        <div class="form-group">
-                            <label for="rating">Rating:</label>
-                            <select name="danh_gia" id="rating" required>
-                                <option value="1">1 Star</option>
-                                <option value="2">2 Stars</option>
-                                <option value="3">3 Stars</option>
-                                <option value="4">4 Stars</option>
-                                <option value="5">5 Stars</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="comment">Comment:</label>
-                            <textarea name="noi_dung" id="comment" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit Comment</button>
-                    </form>
-                </div>
-
-
-
-                <div class="comment-list">
-                    <h3>Comments:</h3>
-                    <?php foreach ($binhluan as $comment) : ?>
-                        <div class="comment">
-                            <h4><?= htmlspecialchars($comment['ten_dang_nhap']) ?> -
-                                <?= htmlspecialchars($comment['danh_gia']) ?> Stars</h4>
-                            <p><?= htmlspecialchars($comment['noi_dung']) ?></p>
-                            <small>Posted on <?= htmlspecialchars($comment['ngay_binh_luan']) ?></small>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-
             </div>
         </div>
     </div>

@@ -12,13 +12,14 @@ include "model/danhmuc.php";
 include "model/binhluan.php";
 include "model/taikhoan.php";
 include "model/giohang.php";
+include "model/lienhe.php";
 
-//Những file này include trên header
-include "view/header.php";
-include "global.php";
 //thực hiện truy vấn lấy ra toàn bộ dl 
 $spnew = loadall_sanpham_home();
 $dsdm = loadall_danhmuc();
+include "global.php";
+include "view/header.php";
+
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
@@ -151,10 +152,10 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case 'donhang':
             if (isset($_POST['payUrl']) && ($_POST['payUrl'])) {
 
-                if (isset($_SESSION['user'])) {
-                    $id_tai_khoan = $_SESSION['user']['id_tai_khoan'];
+                if (isset($_SESSION['ten_dang_nhap'])) {
+                    $id_tai_khoan = $_SESSION['ten_dang_nhap']['id_tai_khoan'];
                 } else {
-                    header("Location: index.php?act=login");
+                    header("Location: index.php?act=dangnhap");
                 }
 
                 $ho_ten = $_POST['ho_ten'];
@@ -342,6 +343,20 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             include "view/taikhoan/quenmk.php";
             break;
+
+        case 'contact':
+            if (isset($_POST['send']) && $_POST['send']) {
+                $id_lien_he = $_POST['id_lien_he'];
+                $hoTen = $_POST['ho_ten'];
+                $email = $_POST['email'];
+                $sdt = $_POST['sdt'];
+                $noiDung = $_POST['noi_dung'];
+                insert_lienhe($id_lien_he, $hoTen, $email, $sdt, $noiDung);
+                echo '<script>alert("Gửi liên hệ thành công")</script>';
+            }
+            include 'view/lienhe.php';
+            break;
+
         case 'thongtin':
             include "view/taikhoan/thongtin.php";
             break;

@@ -80,13 +80,11 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $so_luong = $_POST['so_luong'];
                 $mo_ta_sp = $_POST['mo_ta_sp'];
                 //lỗi đoạn này
-                $hinh = $_FILES['img']['name'];
+                $hinh = $_FILES['hinh']['name'];
                 $target_dir = "../img/";
                 $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
-                if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
-                } else {
-                }
-                update_sanpham($id_danh_muc, $id_san_pham, $ten_san_pham, $gia, $so_luong, $mo_ta_sp, $hinh);
+                if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file))
+                    update_sanpham($id_san_pham, $id_danh_muc, $ten_san_pham, $gia, $so_luong, $mo_ta_sp, $hinh);
                 $thongbao = "cập nhật thành công!";
             }
             $listsanpham = loadall_sanpham("", 0);
@@ -222,10 +220,10 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "binhluan/list.php";
             break;
 
-        case "listlh":
+        case "listlienhe":
             $sql = "select * from lien_he order by id_lien_he desc";
             $listlienhe = pdo_query($sql);
-            include "binhluan/list.php";
+            include "lienhe/list.php";
             break;
         case "xoalh":
             if (isset($_GET['id_lien_he']) && ($_GET['id_lien_he'] > 0)) {
