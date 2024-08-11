@@ -15,20 +15,20 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.html">
 
     <!-- Bootstrap Fremwork Main Css -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/bootstrap.min.css">
+    <link rel="stylesheet" href="uniqlo/css/bootstrap.min.css">
     <!-- All Plugins css -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/plugins.css">
+    <link rel="stylesheet" href="uniqlo/css/plugins.css">
     <!-- Theme shortcodes/elements style -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/shortcode/shortcodes.css">
+    <link rel="stylesheet" href="uniqlo/css/shortcode/shortcodes.css">
     <!-- Theme main style -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/style.css">
+    <link rel="stylesheet" href="uniqlo/style.css">
     <!-- Responsive css -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/responsive.css">
+    <link rel="stylesheet" href="uniqlo/css/responsive.css">
     <!-- User style -->
-    <link rel="stylesheet" href="uniqlo/uniqlo/css/custom.css">
+    <link rel="stylesheet" href="uniqlo/css/custom.css">
 
     <!-- Modernizr JS -->
-    <script src="uniqlo/uniqlo/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="uniqlo/js/vendor/modernizr-3.11.2.min.js"></script>
 </head>
 
 <body>
@@ -46,8 +46,8 @@
                     <div class="row align-items-center">
                         <div class="col-md-2 col-lg-2 col-6">
                             <div class="logo">
-                                <a href="index.html">
-                                    <img src="uniqlo/uniqlo/images/logo/uniqlo.png" alt="logo">
+                                <a href="index.php?act=shop">
+                                    <img src="uniqlo/images/logo/uniqlo.png" alt="logo">
                                 </a>
                             </div>
                         </div>
@@ -55,31 +55,20 @@
                         <div class="col-md-8 col-lg-8 d-none d-md-block">
                             <nav class="mainmenu__nav  d-none d-lg-block">
                                 <ul class="main__menu">
-                                    <li class="drop"><a href="index.html">Home</a>
-
+                                    <li class="drop"><a href="index.php?act=shop">Trang chủ</a>
                                     </li>
-                                    <li><a href="about.html">About</a></li>
                                     <li class="drop"><a href="blog.html">Danh mục</a>
                                         <ul class="dropdown">
-                                            <li><a href="blog.html">blog</a></li>
-                                            <li><a href="blog-details.html">blog details</a></li>
+                                            <?php foreach ($dsdm as $dm) {
+                                                extract($dm);
+                                            ?>
+                                                <li><a href="index.php?act=shop&id_danh_muc=<?= $id_danh_muc ?>"><?= $ten_danh_muc ?></a>
+                                                </li>
+                                            <?php } ?>
                                         </ul>
                                     </li>
-
-                                    <li class="drop"><a href="#">pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="about.html">about</a></li>
-                                            <li><a href="shop.html">shop</a></li>
-                                            <li><a href="shop-sidebar.html">shop sidebar</a></li>
-                                            <li><a href="product-details.html">product details</a></li>
-                                            <li><a href="cart.html">cart</a></li>
-                                            <li><a href="wishlist.html">wishlist</a></li>
-                                            <li><a href="checkout.html">checkout</a></li>
-                                            <li><a href="team.html">team</a></li>
-                                            <li><a href="login-register.html">login & register</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">contact</a></li>
+                                    <li><a href="index.php?act=contact">Liên hệ</a></li>
+                                    <li><a href="index.php?act=listdonhang">Đơn Hàng</a></li>
                                 </ul>
                             </nav>
 
@@ -88,7 +77,14 @@
                         <div class="col-md-2 col-lg-2 col-6">
                             <ul class="menu-extra">
                                 <li class="search search__open d-none d-sm-block"><span class="ti-search"></span></li>
-                                <li><a href="login-register.html"><span class="ti-user"></span></a></li>
+                                <li>
+                                    <a href="index.php?act=thongtin">
+                                        <span class="ti-user"></span>
+                                    </a>
+                                    <a href="index.php?act=dangnhap">Đăng nhập/ </a>
+                                    <a href="index.php?act=dangky">Đăng ký</a>
+                                </li>
+
                                 <li class="cart__menu"><span class="ti-shopping-cart"></span></li>
 
                             </ul>
@@ -109,9 +105,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
+                            <!-- TÌM KIẾM -->
                             <div class="search__inner">
                                 <form action="#" method="get">
-                                    <input placeholder="Search here... " type="text">
+                                    <input placeholder="Tìm kiếm " type="text" name="keyword" id="">
                                     <button type="submit"></button>
                                 </form>
                                 <div class="search__close__btn">
@@ -132,21 +129,21 @@
                     <div class="off__contact">
                         <div class="logo">
                             <a href="index.html">
-                                <img src="uniqlo/uniqlo/images/logo/uniqlo.png" alt="logo">
+                                <img src="uniqlo/images/logo/uniqlo.png" alt="logo">
                             </a>
                         </div>
                         <p>Lorem ipsum dolor sit amet consectetu adipisicing elit sed do eiusmod tempor incididunt ut
                             labore.</p>
                     </div>
                     <ul class="sidebar__thumd">
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/1.jpg" alt="sidebar images"></a></li>
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/2.jpg" alt="sidebar images"></a></li>
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/3.jpg" alt="sidebar images"></a></li>
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/4.jpg" alt="sidebar images"></a></li>
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/5.jpg" alt="sidebar images"></a></li>
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/6.jpg" alt="sidebar images"></a></li>
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/7.jpg" alt="sidebar images"></a></li>
-                        <li><a href="#"><img src="uniqlo/uniqlo/images/sidebar-img/8.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/1.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/2.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/3.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/4.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/5.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/6.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/7.jpg" alt="sidebar images"></a></li>
+                        <li><a href="#"><img src="uniqlo/images/sidebar-img/8.jpg" alt="sidebar images"></a></li>
                     </ul>
 
                 </div>
@@ -162,7 +159,7 @@
                         <div class="shp__single__product">
                             <div class="shp__pro__thumb">
                                 <a href="#">
-                                    <img src="uniqlo/uniqlo/images/product/sm-img/1.jpg" alt="product images">
+                                    <img src="uniqlo/images/product/sm-img/1.jpg" alt="product images">
                                 </a>
                             </div>
                             <div class="shp__pro__details">
@@ -177,7 +174,7 @@
                         <div class="shp__single__product">
                             <div class="shp__pro__thumb">
                                 <a href="#">
-                                    <img src="uniqlo/uniqlo/images/product/sm-img/2.jpg" alt="product images">
+                                    <img src="uniqlo/images/product/sm-img/2.jpg" alt="product images">
                                 </a>
                             </div>
                             <div class="shp__pro__details">
@@ -195,7 +192,7 @@
                         <li class="total__price">$130.00</li>
                     </ul>
                     <ul class="shopping__btn">
-                        <li><a href="cart.html">View Cart</a></li>
+                        <li><a href="index.php?act=giohang">View Cart</a></li>
                         <li class="shp__checkout"><a href="uniqlo/checkout.html">Checkout</a></li>
                     </ul>
                 </div>

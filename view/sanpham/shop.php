@@ -2,27 +2,7 @@
        <div class="slider__container slider--one slider__new">
            <div class="slider__activation__wrap owl-carousel owl-theme">
                <!-- Start Single Slide -->
-               <div class="animation__style01 slide slider__full--screen"
-                   style="background: rgba(0, 0, 0, 0) url(uniqlo/images/slider/bg/5.jpg) no-repeat scroll center center / cover ;">
-                   <div class="container">
-                       <div class="row">
-                           <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                               <div class="slider__content">
-                                   <h1>New Furniture <span class="text--theme">2022.</span></h1>
-                                   <p>Whether you adore a classic blueblood aesthetic or a downhome décor, you can find
-                                       a wenro sofa to suit your desires perfectly.</p>
-                                   <div class="uniq__btn">
-                                       <a class="htc__btn" href="cart.html">shop now</a>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               <!-- End Single Slide -->
-               <!-- Start Single Slide -->
-               <div class="animation__style02 slide slider__full--screen"
-                   style="background: rgba(0, 0, 0, 0) url(uniqlo/images/slider/bg/5.jpg) no-repeat scroll center center / cover ;">
+               <div class="animation__style02 slide slider__full--screen" style="background: rgba(0, 0, 0, 0) url(uniqlo/images/slider/bg/5.jpg) no-repeat scroll center center / cover ;">
                    <div class="container">
                        <div class="row">
                            <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
@@ -51,7 +31,7 @@
                    <div class="col-lg-6 col-md-6 col-sm-12">
                        <div class="banner">
                            <div class="thumb">
-                               <a href="#"><img src="uniqlo/uniqlo/images/new-product/3.jpg" alt=""></a>
+                               <a href="#"><img src="uniqlo/images/new-product/3.jpg" alt=""></a>
                            </div>
                            <div class="content">
                                <h6>30% off</h6>
@@ -65,7 +45,7 @@
                    <div class="col-lg-6 col-md-6 col-sm-12 xmt-40">
                        <div class="banner">
                            <div class="thumb">
-                               <a href="#"><img src="uniqlo/uniqlo/images/new-product/4.jpg" alt=""></a>
+                               <a href="#"><img src="uniqlo/images/new-product/4.jpg" alt=""></a>
                            </div>
                            <div class="content">
                                <h6>50% off</h6>
@@ -97,143 +77,55 @@
                    </div>
                    <!-- End Product MEnu -->
                    <div class="row product__list">
+
                        <!-- Start Single Product -->
-                       <div class="col-md-4 single__pro col-lg-3 cat--1 col-sm-12">
-                           <div class="product foo">
-                               <div class="product__inner">
-                                   <div class="pro__thumb">
-                                       <a href="#">
-                                           <img src="uniqlo/images/product/17.png" alt="product images">
-                                       </a>
-                                   </div>
-                                   <div class="product__hover__info">
-                                       <ul class="product__action">
-                                           <li><a data-bs-toggle="modal" data-bs-target="#productModal"
-                                                   title="Quick View" class="quick-view modal-view detail-link"
-                                                   href="#"><span class="ti-plus"></span></a></li>
-                                           <li><a title="Add TO Cart" href="cart.html"><span
-                                                       class="ti-shopping-cart"></span></a></li>
-                                       </ul>
-                                   </div>
-                                   <div class="add__to__wishlist">
-                                       <a data-bs-toggle="tooltip" title="Add To Wishlist" class="add-to-cart"
-                                           href="wishlist.html"><span class="ti-heart"></span></a>
+                       <div class="row">
+                           <?php
+                            $i = 0;
+                            foreach ($dssp as $sp) {
+                                extract($sp);
+                                $img = $img_path . $img;
+                                $linksp = "index.php?act=chitietsp&id_san_pham=" . $id_san_pham;
+                            ?>
+                               <div class="col-md-3 col-sm-6 single__pro">
+                                   <div class="product foo">
+                                       <div class="product__inner">
+                                           <div class="pro__thumb">
+                                               <a href="<?php echo $linksp; ?>">
+                                                   <img src="<?php echo $img; ?>" alt="product images">
+                                               </a>
+                                           </div>
+                                           <div class="product__hover__info">
+                                               <ul class="product__action">
+                                                   <li><a data-bs-toggle="modal" data-bs-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
+                                                   <li><a title="Add TO Cart" href="index.php?act=giohang"><span class="ti-shopping-cart"></span></a></li>
+                                               </ul>
+                                           </div>
+                                           <div class="add__to__wishlist">
+                                               <a data-bs-toggle="tooltip" title="Add To Wishlist" class="add-to-cart" href="wishlist.html"><span class="ti-heart"></span></a>
+                                           </div>
+                                       </div>
+                                       <div class="product__details">
+                                           <h2><a href="<?php echo $linksp; ?>"><?php echo $ten_san_pham; ?></a></h2>
+                                           <ul class="product__price">
+                                               <li class="price"><?php echo number_format($gia, 0, ',', '.') . 'đ'; ?></li>
+                                           </ul>
+                                       </div>
                                    </div>
                                </div>
-                               <div class="product__details">
-                                   <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                   <ul class="product__price">
-                                       <li class="old__price">$16.00</li>
-                                       <li class="new__price">$10.00</li>
-                                   </ul>
-                               </div>
-                           </div>
+                           <?php
+                                $i++;
+                                if ($i % 4 == 0) {
+                                    echo '</div><div class="row">';
+                                }
+                            }
+                            ?>
                        </div>
-                       <!-- End Single Product -->
-                       <!-- Start Single Product -->
-                       <div class="col-md-4 single__pro col-lg-3 cat--1 col-sm-12">
-                           <div class="product foo">
-                               <div class="product__inner">
-                                   <div class="pro__thumb">
-                                       <a href="#">
-                                           <img src="uniqlo/images/product/18.png" alt="product images">
-                                       </a>
-                                   </div>
-                                   <div class="product__hover__info">
-                                       <ul class="product__action">
-                                           <li><a data-bs-toggle="modal" data-bs-target="#productModal"
-                                                   title="Quick View" class="quick-view modal-view detail-link"
-                                                   href="#"><span class="ti-plus"></span></a></li>
-                                           <li><a title="Add TO Cart" href="cart.html"><span
-                                                       class="ti-shopping-cart"></span></a></li>
-                                       </ul>
-                                   </div>
-                                   <div class="add__to__wishlist">
-                                       <a data-bs-toggle="tooltip" title="Add To Wishlist" class="add-to-cart"
-                                           href="wishlist.html"><span class="ti-heart"></span></a>
-                                   </div>
-                               </div>
-                               <div class="product__details">
-                                   <h2><a href="product-details.html">BO&Play Wireless Speaker</a></h2>
-                                   <ul class="product__price">
-                                       <li class="old__price">$16.00</li>
-                                       <li class="new__price">$10.00</li>
-                                   </ul>
-                               </div>
-                           </div>
-                       </div>
-                       <!-- End Single Product -->
-                       <!-- Start Single Product -->
-                       <div class="col-md-4 single__pro col-lg-3 col-sm-12 cat--2">
-                           <div class="product foo">
-                               <div class="product__inner">
-                                   <div class="pro__thumb">
-                                       <a href="#">
-                                           <img src="uniqlo/uniqlo/images/product/19.png" alt="product images">
-                                       </a>
-                                   </div>
-                                   <div class="product__hover__info">
-                                       <ul class="product__action">
-                                           <li><a data-bs-toggle="modal" data-bs-target="#productModal"
-                                                   title="Quick View" class="quick-view modal-view detail-link"
-                                                   href="#"><span class="ti-plus"></span></a></li>
-                                           <li><a title="Add TO Cart" href="cart.html"><span
-                                                       class="ti-shopping-cart"></span></a></li>
-                                       </ul>
-                                   </div>
-                                   <div class="add__to__wishlist">
-                                       <a data-bs-toggle="tooltip" title="Add To Wishlist" class="add-to-cart"
-                                           href="wishlist.html"><span class="ti-heart"></span></a>
-                                   </div>
-                               </div>
-                               <div class="product__details">
-                                   <h2><a href="product-details.html">Brone Candle</a></h2>
-                                   <ul class="product__price">
-                                       <li class="old__price">$16.00</li>
-                                       <li class="new__price">$10.00</li>
-                                   </ul>
-                               </div>
-                           </div>
-                       </div>
-                       <!-- End Single Product -->
-                       <!-- Start Single Product -->
-                       <div class="col-md-4 single__pro col-lg-3 col-sm-12 cat--4">
-                           <div class="product foo">
-                               <div class="product__inner">
-                                   <div class="pro__thumb">
-                                       <a href="#">
-                                           <img src="images/product/20.png" alt="product images">
-                                       </a>
-                                   </div>
-                                   <div class="product__hover__info">
-                                       <ul class="product__action">
-                                           <li><a data-bs-toggle="modal" data-bs-target="#productModal"
-                                                   title="Quick View" class="quick-view modal-view detail-link"
-                                                   href="#"><span class="ti-plus"></span></a></li>
-                                           <li><a title="Add TO Cart" href="cart.html"><span
-                                                       class="ti-shopping-cart"></span></a></li>
-                                       </ul>
-                                   </div>
-                                   <div class="add__to__wishlist">
-                                       <a data-bs-toggle="tooltip" title="Add To Wishlist" class="add-to-cart"
-                                           href="wishlist.html"><span class="ti-heart"></span></a>
-                                   </div>
-                               </div>
-                               <div class="product__details">
-                                   <h2><a href="product-details.html">Brone Lamp Glasses</a></h2>
-                                   <ul class="product__price">
-                                       <li class="old__price">$16.00</li>
-                                       <li class="new__price">$10.00</li>
-                                   </ul>
-                               </div>
-                           </div>
-                       </div>
-                       <!-- End Single Product -->
-                       <!-- Start Single Product -->
 
                        <!-- End Single Product -->
                    </div>
                </div>
            </div>
        </section>
+
        <!-- End Our Product Area -->
